@@ -12,6 +12,9 @@ module.exports = {
   markdown: {
     config: md => {
       md.use(require('markdown-it-anchor'))
+    },
+    toc: {
+      includeLevel: [2,3] // 可以使用 [[toc]] 将本页的目录进行抽取
     }
   },
   themeConfig: {
@@ -25,8 +28,8 @@ module.exports = {
         title: '博客',
         collapsable: false,
         children: [
-          '/blog/javaDesignPattern',
-          '/blog/howToBuildMyOwnSite',
+          // '/blog/javaDesignPattern',
+          // '/blog/howToBuildMyOwnSite',
         ]
       }
     ]
