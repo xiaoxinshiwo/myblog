@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>章永新的博客 | 如何建设自己的个人网站</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/zhangyongxin/logo.ico">
+    
+    <link rel="preload" href="/zhangyongxin/assets/css/0.styles.9f535966.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.f1107864.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/2.2ec5c43e.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/1.116e1d9b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.70be91bc.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.17b865f3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.151f23ee.js">
+    <link rel="stylesheet" href="/zhangyongxin/assets/css/0.styles.9f535966.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/zhangyongxin/" class="home-link router-link-active"><!----><span class="site-name">
+      章永新的博客
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav></div></header><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav><ul class="sidebar-links"><li><a href="/zhangyongxin/about/about.html" class="sidebar-link">关于</a></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>博客</span><!----></p><ul class="sidebar-group-items"><li><a href="/zhangyongxin/blog/javaDesignPattern.html" class="sidebar-link">java设计模式</a></li><li><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html" class="active sidebar-link">如何建设自己的个人网站</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html#使用技术" class="sidebar-link">使用技术</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html#环境" class="sidebar-link">环境</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html#步骤" class="sidebar-link">步骤</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html#发布至github" class="sidebar-link">发布至GitHub</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html#注意事项" class="sidebar-link">注意事项</a></li></ul></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="如何建设自己的个人网站"><a href="#如何建设自己的个人网站" aria-hidden="true" class="header-anchor">#</a> 如何建设自己的个人网站</h1><h2 id="前言"><a href="#前言" aria-hidden="true" class="header-anchor">#</a> 前言</h2><p>如果您希望创建一个类似本站的静态个人网站，请留下您的脚步，<br>
+希望看完本文您能够搭建自己的个人网站</p><h2 id="使用技术"><a href="#使用技术" aria-hidden="true" class="header-anchor">#</a> 使用技术</h2><p>VuePress 官方网站：<a href>https://vuepress.vuejs.org/zh/guide/</a></p><h2 id="环境"><a href="#环境" aria-hidden="true" class="header-anchor">#</a> 环境</h2><pre class="language-text"><code>Macbook pro 、IntelliJ Idea
+</code></pre><h2 id="步骤"><a href="#步骤" aria-hidden="true" class="header-anchor">#</a> 步骤</h2><p>安装yarn</p><pre class="language-text"><code>brew install yarn --without-node
+</code></pre><p>新建工程文件夹并且初始化</p><pre class="language-text"><code>mkdir my_project
+
+cd my_project
+
+npm init -y
+</code></pre><p>初始化vuepress工程</p><pre class="language-text"><code># 将 VuePress 作为一个本地依赖安装
+yarn add -D vuepress # 或者：npm install -D vuepress
+
+# 新建一个 docs 文件夹
+mkdir docs
+
+# 新建一个 markdown 文件
+echo &quot;# Hello VuePress!&quot; &gt; docs/README.md
+
+# 开始写作
+npx vuepress dev docs
+</code></pre><p>接着，在 package.json 里加一些脚本:</p><pre class="language-text"><code>{
+  &quot;scripts&quot;: {
+    &quot;docs:dev&quot;: &quot;vuepress dev docs&quot;,
+    &quot;docs:build&quot;: &quot;vuepress build docs&quot;
+  }
+}
+</code></pre><p>项目配置</p><pre class="language-text"><code>// cd進入.vuepress資料夾
+// 建立一個config.js設定檔
+module.exports = {
+  title: '章永新的博客',
+  base: &quot;/zhangyongxin/&quot;,
+  head: [
+    ['link', { rel: 'icon', href: `/logo.ico` }]
+  ],
+  locales: {
+    '/': {
+      lang: 'zh-CN',
+    }
+  },
+  markdown: {
+    config: md =&gt; {
+      md.use(require('markdown-it-anchor'))
+    },
+    toc: {
+      includeLevel: [3,4] // 可以使用 [[toc]] 将本页的目录进行抽取
+    }
+  },
+  themeConfig: {
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: '关于', link: '/about/about' },
+    ],
+    sidebar: [
+      '/about/about',
+      {
+        title: '博客',
+        collapsable: false,
+        children: [
+          '/blog/javaDesignPattern',
+          '/blog/howToBuildMyOwnSite',
+        ]
+      }
+    ]
+  }
+}
+</code></pre><p>代码结构如下</p><img src="/zhangyongxin/assets/img/codeDirs.290c1c6e.png" alt="代码目录"><h2 id="发布至github"><a href="#发布至github" aria-hidden="true" class="header-anchor">#</a> 发布至GitHub</h2><ol><li><p>将 .vuepress/config.js 的 base 设置成你仓库的名字，举个例子，如果你的仓库是 https://github.com/foo/bar, 部署的页面将会通过 https://foo.github.io/bar 来访问，此时，你应该将 base 设置为 “/bar/”。</p></li><li><p>在你的项目中运行:</p></li></ol><pre class="language-text"><code>yarn docs:build
+在GitHub上创建名为bar的repository
+将这个repository clone到本地
+将dist下生成的所有文件放到bar文件夹下，push到GitHub上，
+点击settings按照下图进行设置，等待十几秒即可访问自己的主页了
+</code></pre><img src="/zhangyongxin/assets/img/gitHubPages.dfc2e9da.png" alt="GitHub设置" style="height: 50%; width: 60%;"><h2 id="注意事项"><a href="#注意事项" aria-hidden="true" class="header-anchor">#</a> 注意事项</h2><ol><li>README.md 文件会被编译为index.html</li><li>yarn docs:build 默认会在.vuepress文件加下生成dist文件</li><li>更多设置请参考： <a href>https://vuepress.vuejs.org/zh/guide/</a></li></ol></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/zhangyongxin/blog/javaDesignPattern.html" class="prev">
+          java设计模式
+        </a></span><!----></p></div></div></div></div>
+    <script src="/zhangyongxin/assets/js/2.2ec5c43e.js" defer></script><script src="/zhangyongxin/assets/js/app.f1107864.js" defer></script>
+  </body>
+</html>
