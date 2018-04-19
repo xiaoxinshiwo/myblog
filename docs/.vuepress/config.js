@@ -5,7 +5,6 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: '关于', link: '/about/about' },
-      { text: 'VuePress', link: 'https://vuepress.vuejs.org/' },
     ],
     sidebar: [
       '/about/about',
