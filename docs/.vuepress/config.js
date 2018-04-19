@@ -9,6 +9,11 @@ module.exports = {
       lang: 'zh-CN',
     }
   },
+  markdown: {
+    config: md => {
+      md.use(require('markdown-it-anchor'))
+    }
+  },
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
@@ -20,7 +25,8 @@ module.exports = {
         title: '博客',
         collapsable: false,
         children: [
-          '/blog/javaDesignPattern'
+          '/blog/javaDesignPattern',
+          '/blog/howToBuildMyOwnSite',
         ]
       }
     ]
