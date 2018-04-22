@@ -23,13 +23,13 @@ module.exports = {
       { text: '关于', link: '/about/about' },
     ],
     sidebar: [
-      '/about/about',
       {
         title: '博客',
-        collapsable: false,
+        collapsable: true,
         children: [
-          '/blog/javaDesignPattern',
           '/blog/howToBuildMyOwnSite/howToBuildMyOwnSite',
+          '/blog/javaDesignPattern',
+          '/blog/bookList',
         ]
       }
     ]
