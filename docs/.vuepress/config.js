@@ -28,6 +28,7 @@ module.exports = {
         collapsable: true,
         children: [
           '/blog/howToBuildMyOwnSite/howToBuildMyOwnSite',
+          '/blog/knowledgeStack',
           '/blog/javaDesignPattern',
           '/blog/bookList',
         ]
