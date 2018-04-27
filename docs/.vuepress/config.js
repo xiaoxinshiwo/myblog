@@ -30,7 +30,7 @@ module.exports = {
           '/blog/howToBuildMyOwnSite/howToBuildMyOwnSite',
           '/blog/knowledgeStack',
           '/blog/bookList',
-          '/blog/javaDesignPattern',
+          '/blog/designPattern/javaDesignPattern',
         ]
       },
       {
