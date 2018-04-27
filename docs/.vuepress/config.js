@@ -29,8 +29,8 @@ module.exports = {
         children: [
           '/blog/howToBuildMyOwnSite/howToBuildMyOwnSite',
           '/blog/knowledgeStack',
-          '/blog/javaDesignPattern',
           '/blog/bookList',
+          '/blog/javaDesignPattern',
         ]
       },
       {
