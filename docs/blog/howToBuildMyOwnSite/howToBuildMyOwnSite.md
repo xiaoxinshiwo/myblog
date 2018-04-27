@@ -3,7 +3,7 @@
 如果您希望创建一个类似本站的静态个人网站，请留下您的脚步，<br/>
 希望看完本文您能够搭建自己的个人网站
 ## 使用技术
-VuePress 官方网站：[https://vuepress.vuejs.org/zh/guide/]()
+VuePress 官方网站：[https://vuepress.vuejs.org/zh/guide/](https://vuepress.vuejs.org/zh/guide/)
 ## 环境
 ```
 Macbook pro 、IntelliJ Idea
@@ -107,7 +107,7 @@ yarn docs:build
 ## 注意事项
 1. README.md 文件会被编译为index.html
 2. yarn docs:build 默认会在.vuepress文件加下生成dist文件
-3. 更多设置请参考： [https://vuepress.vuejs.org/zh/guide/]()
+3. 更多设置请参考： [https://vuepress.vuejs.org/zh/guide/](https://vuepress.vuejs.org/zh/guide/)
 
 
 

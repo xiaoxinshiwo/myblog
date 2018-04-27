@@ -32,6 +32,13 @@ module.exports = {
           '/blog/javaDesignPattern',
           '/blog/bookList',
         ]
+      },
+      {
+        title: '转载',
+        collapsable: true,
+        children: [
+          '/reprint/threadLocal',
+        ]
       }
     ]
   }
