@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>章永新的博客 | 记一次生产系统被攻击的事件</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/zhangyongxin/logo.ico">
+    
+    <link rel="preload" href="/zhangyongxin/assets/css/0.styles.9f535966.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.376fe20d.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/2.9d754cae.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/1.d3acaa75.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.21b469bf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.15a2a10b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.daa0debc.js"><link rel="prefetch" href="/zhangyongxin/assets/js/6.c6292019.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.743c7656.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.417eaffb.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.f959697c.js">
+    <link rel="stylesheet" href="/zhangyongxin/assets/css/0.styles.9f535966.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/zhangyongxin/" class="home-link router-link-active"><!----><span class="site-name">
+      章永新的博客
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav></div></header><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav><ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>博客</span><span class="arrow up"></span></p><ul class="sidebar-group-items"><li><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html" class="sidebar-link">如何建设自己的个人网站</a></li><li><a href="/zhangyongxin/blog/knowledgeStack.html" class="sidebar-link">如何建立自己的知识体系</a></li><li><a href="/zhangyongxin/blog/bookList.html" class="sidebar-link">书单</a></li><li><a href="/zhangyongxin/blog/designPattern/javaDesignPattern.html" class="sidebar-link">java设计模式</a></li><li><a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html" class="active sidebar-link">记一次生产系统被攻击的事件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html#背景" class="sidebar-link">背景</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html#攻击手段" class="sidebar-link">攻击手段</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html#解决办法" class="sidebar-link">解决办法</a></li></ul></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>转载</span><span class="arrow down"></span></p><!----></div></li></ul></div><div class="page"><div class="content"><h1 id="记一次生产系统被攻击的事件"><a href="#记一次生产系统被攻击的事件" aria-hidden="true" class="header-anchor">#</a> 记一次生产系统被攻击的事件</h1><h2 id="背景"><a href="#背景" aria-hidden="true" class="header-anchor">#</a> 背景</h2><p>2018年5月1日假期前一天，发现一个子系统的短信验证码无法收取。</p><h2 id="攻击手段"><a href="#攻击手段" aria-hidden="true" class="header-anchor">#</a> 攻击手段</h2><img src="/zhangyongxin/assets/img/shortmsgattack.36d31a2b.jpg" alt="短信恶意攻击"><h2 id="解决办法"><a href="#解决办法" aria-hidden="true" class="header-anchor">#</a> 解决办法</h2><p>说实话，攻击的手段很高对于2C的业务没有太好的解决办法，只能从以下几点入手：</p><ol><li>发送验证码前增加图形验证码这样的手段</li><li>ip限制</li><li>限制手机号</li><li>…</li></ol></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/zhangyongxin/blog/designPattern/javaDesignPattern.html" class="prev">
+          java设计模式
+        </a></span><span class="next"><a href="/zhangyongxin/reprint/threadLocal.html">
+          java.lang.ThreadLocal 分析
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/zhangyongxin/assets/js/2.9d754cae.js" defer></script><script src="/zhangyongxin/assets/js/app.376fe20d.js" defer></script>
+  </body>
+</html>
