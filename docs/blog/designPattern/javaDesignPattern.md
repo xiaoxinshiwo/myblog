@@ -1,4 +1,6 @@
 # java设计模式
+<authorAndTime dateTime='2018-04-28 16:11:10'/>
+
 ## 设计模式之间的关系
 <img src="./design-pattern-relation.jpg" alt="设计模式之间的关系" >
 
