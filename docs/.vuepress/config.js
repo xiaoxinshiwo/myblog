@@ -39,6 +39,7 @@ module.exports = {
         collapsable: true,
         children: [
           '/reprint/threadLocal',
+          '/reprint/stanfordClassMemory',
         ]
       }
     ]
