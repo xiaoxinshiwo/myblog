@@ -22,18 +22,18 @@ java面试时经常会有这道题：String str = new String("abc");创建了几
   JVM规范要求进入这里的String实例叫“被驻留的interned string”，各个JVM可以有不同的实现，HotSpot是设置了一个哈希表StringTable来引用堆中的字符串实例，被引用就是被驻留
 
 > ### stack栈内存
-> 当程序被编译时分配内存
-> 存放局部变量、参数、和基本类型的常量
-> 自动管理内存的释放和创建
+> 当程序被编译时分配内存。
+> 存放局部变量、参数、和基本类型的常量。
+> 自动管理内存的释放和创建。
 
 > ### head堆内存
-> 程序运行时分配内存
+> 程序运行时分配内存。
 > 存放new的对象这个区域也是经常讨论的需要GC的地方。
-> heap分为新生代、老年代
+> heap分为新生代、老年代。
 > 新生代分为Eden区+2个Survivor区，每次使用Eden和其中一块Survivor。当发生Minor GC时会将
 Eden和Survivor中存活的放在另外一个Survivor区。如果这个Survivor区空间不够且老年代够的话
 这部分对象会被直接复制到老年代。如果老年代也不够则会发生Full GC，Full GC后空间仍不够则会发生OutOfMemoryError。
-> 大对象直接存入老年代
+> 大对象直接存入老年代。
 
 > ### 永久代
 > 永久代不是heap的一部分，不会发生GC。
