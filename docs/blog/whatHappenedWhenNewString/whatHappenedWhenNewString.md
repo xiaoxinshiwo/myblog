@@ -32,7 +32,7 @@ java面试时经常会有这道题：String str = new String("abc");创建了几
 > heap分为新生代、老年代
 > 新生代分为Eden区+2个Survivor区，每次使用Eden和其中一块Survivor。当发生Minor GC时会将
 Eden和Survivor中存活的放在另外一个Survivor区。如果这个Survivor区空间不够且老年代够的话
-这部分对象会被直接复制到老年代。如果老年代也不够则会发生Full GC，Full GC后空间仍不够则会发生OutOfMemoryError
+这部分对象会被直接复制到老年代。如果老年代也不够则会发生Full GC，Full GC后空间仍不够则会发生OutOfMemoryError。
 > 大对象直接存入老年代
 
 > ### 永久代

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/zhangyongxin/logo.ico">
     
-    <link rel="preload" href="/zhangyongxin/assets/css/11.styles.5f094592.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.42d666d3.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/2.6ed29ebc.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/10.8f246004.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/3.fb80e87e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.a35b44de.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.8ddbad61.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.b4e6316d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.7f3e3b4d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/6.9217e043.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.5e4a3a46.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.ce017092.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.c17b7690.js">
+    <link rel="preload" href="/zhangyongxin/assets/css/11.styles.5f094592.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.538b3435.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/2.d9cb143a.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/10.8f246004.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/3.fb80e87e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.a35b44de.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.8ddbad61.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.b4e6316d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.7f3e3b4d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/6.9217e043.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.5e4a3a46.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.ce017092.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.c17b7690.js">
     <link rel="stylesheet" href="/zhangyongxin/assets/css/11.styles.5f094592.css">
   </head>
   <body>
@@ -28,7 +28,7 @@ JVM规范要求进入这里的String实例叫“被驻留的interned string”�
 heap分为新生代、老年代
 新生代分为Eden区+2个Survivor区，每次使用Eden和其中一块Survivor。当发生Minor GC时会将
 Eden和Survivor中存活的放在另外一个Survivor区。如果这个Survivor区空间不够且老年代够的话
-这部分对象会被直接复制到老年代。如果老年代也不够则会发生Full GC，Full GC后空间仍不够则会发生OutOfMemoryError
+这部分对象会被直接复制到老年代。如果老年代也不够则会发生Full GC，Full GC后空间仍不够则会发生OutOfMemoryError。
 大对象直接存入老年代</p></blockquote><blockquote><h3 id="永久代"><a href="#永久代" aria-hidden="true" class="header-anchor">#</a> 永久代</h3><p>永久代不是heap的一部分，不会发生GC。</p></blockquote><blockquote><h3 id="静态区-方法区"><a href="#静态区-方法区" aria-hidden="true" class="header-anchor">#</a> 静态区/方法区</h3><p>存放所有的class和static变量</p></blockquote><h2 id="jvm内存分配过程"><a href="#jvm内存分配过程" aria-hidden="true" class="header-anchor">#</a> JVM内存分配过程</h2><img src="/zhangyongxin/assets/img/java-memory.7f5a3e2d.png" alt="java内存管理"><h2 id="解析"><a href="#解析" aria-hidden="true" class="header-anchor">#</a> 解析</h2><ol><li><p>出现了字面量&quot;abc&quot;，那么去String Pool中查找是否有相同字符串存在，因为程序就这一行代码所以肯定没有，那么就在Java Heap中用字面量&quot;abc&quot;首先创建1个String对象</p></li><li><p>new String(“abc”)，关键字new又在Java Heap中创建了1个对象，然后调用接收String参数的构造器进行了初始化。最终str的引用是这个String对象</p></li></ol><p>参考：《深入理解JAVA虚拟机》–周志明</p></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
         ← <a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html" class="prev">
           记一次生产系统被攻击的事件
@@ -36,6 +36,6 @@ Eden和Survivor中存活的放在另外一个Survivor区。如果这个Survivor�
           java.lang.ThreadLocal 分析
         </a> →
       </span></p></div></div></div></div>
-    <script src="/zhangyongxin/assets/js/2.6ed29ebc.js" defer></script><script src="/zhangyongxin/assets/js/10.8f246004.js" defer></script><script src="/zhangyongxin/assets/js/app.42d666d3.js" defer></script>
+    <script src="/zhangyongxin/assets/js/2.d9cb143a.js" defer></script><script src="/zhangyongxin/assets/js/10.8f246004.js" defer></script><script src="/zhangyongxin/assets/js/app.538b3435.js" defer></script>
   </body>
 </html>
