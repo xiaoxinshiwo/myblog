@@ -31,7 +31,8 @@ module.exports = {
           '/blog/knowledgeStack',
           '/blog/bookList',
           '/blog/designPattern/javaDesignPattern',
-          'blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
+          '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
+          '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
         ]
       },
       {
