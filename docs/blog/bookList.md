@@ -11,3 +11,8 @@
 1. 一只特立独行的猪:hourglass_flowing_sand:
 2. 黄金时代:hourglass_flowing_sand:
 3. 爱你就像爱生命:hourglass_flowing_sand:
+4. 第七天:white_check_mark:
+> 那里树叶会向你招手，石头会向你微笑，河水会向你问候。那里没有贫贱也没有富贵，没有悲伤
+也没有疼痛，没有仇也没有恨……那里人人死而平等。<br/>
+> 他问："那时什么地方？"<br/>
+> 我说："死无葬身之地。"<br/>
