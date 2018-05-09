@@ -33,6 +33,7 @@ module.exports = {
           '/blog/designPattern/javaDesignPattern',
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
+          '/blog/httpStatus',
         ]
       },
       {
