@@ -42,7 +42,8 @@ module.exports = {
         children: [
           '/reprint/threadLocal',
           '/reprint/stanfordClassMemory',
-          '/reprint/javaInterview1'
+          '/reprint/javaInterview/javaInterview1',
+          '/reprint/javaInterview/javaInterview2'
         ]
       }
     ]
