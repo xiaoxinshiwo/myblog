@@ -34,7 +34,9 @@ module.exports = {
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
           '/blog/httpStatus',
-          '/blog/springNotes',
+          '/blog/springNotes1',
+          '/blog/springNotes2',
+          '/blog/springNotes3',
           '/blog/interestingThoughts/interestingThoughts'
         ]
       },
