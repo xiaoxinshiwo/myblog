@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>章永新的博客 | 在Spring项目中通过切面进行参数校验</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/zhangyongxin/logo.ico">
+    
+    <link rel="preload" href="/zhangyongxin/assets/css/19.styles.ff0fe6a0.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.438c3593.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/5.00644bef.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/18.9adf530f.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/6.70aaf9e0.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.a8e02caa.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.abd88078.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.b9087ae4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.d02e1b8e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.a8c47b24.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.a1f6fdcf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.34a00ebf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.87b12fc8.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.3f9ca4ce.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.1efa6b34.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.461c489e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.7b330893.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.78184bb6.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.75b411f4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.c89c113a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.7307e3cc.js">
+    <link rel="stylesheet" href="/zhangyongxin/assets/css/19.styles.ff0fe6a0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/zhangyongxin/" class="home-link router-link-active"><!----><span class="site-name">
+      章永新的博客
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav></div></header><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav><ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>博客</span><span class="arrow up"></span></p><ul class="sidebar-group-items"><li><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html" class="sidebar-link">如何建设自己的个人网站</a></li><li><a href="/zhangyongxin/blog/knowledgeStack.html" class="sidebar-link">如何建立自己的知识体系</a></li><li><a href="/zhangyongxin/blog/bookList.html" class="sidebar-link">书单</a></li><li><a href="/zhangyongxin/blog/designPattern/javaDesignPattern.html" class="sidebar-link">java设计模式</a></li><li><a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html" class="sidebar-link">记一次生产系统被攻击的事件</a></li><li><a href="/zhangyongxin/blog/whatHappenedWhenNewString/whatHappenedWhenNewString.html" class="sidebar-link">从 String str = new String(&quot;abc&quot;);说开去</a></li><li><a href="/zhangyongxin/blog/validateParameterforYourService.html" class="active sidebar-link">在Spring项目中通过切面进行参数校验</a></li><li><a href="/zhangyongxin/blog/httpStatus.html" class="sidebar-link">常见的HTTP状态码</a></li><li><a href="/zhangyongxin/blog/springNotes1.html" class="sidebar-link">spring4.3读书笔记1</a></li><li><a href="/zhangyongxin/blog/springNotes2.html" class="sidebar-link">Spring4.3读书笔记2</a></li><li><a href="/zhangyongxin/blog/springNotes3.html" class="sidebar-link">Spring4.3读书笔记3</a></li><li><a href="/zhangyongxin/blog/interestingThoughts/interestingThoughts.html" class="sidebar-link">有趣的想法</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>转载</span><span class="arrow down"></span></p><!----></div></li></ul></div><div class="page"><div class="content"><h1 id="在spring项目中通过切面进行参数校验"><a href="#在spring项目中通过切面进行参数校验" aria-hidden="true" class="header-anchor">#</a> 在Spring项目中通过切面进行参数校验</h1><div><p>章永新 2018-05-17 18:51:15</p><hr></div><blockquote><p>一直以来项目中的参数校验零零散散，散布在controller或者service的方法的开始部分。统一处理可以使代码优雅高效。<br>
+另外参数校验在controller做还是service做呢？个人觉得service层才最合理，因为service可以复用。</p></blockquote><p>下面我们来看看怎么在service层加入切面，在切面上如何进行参数校验吧。
+引入依赖</p><pre class="language-text"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.hibernate.validator&lt;/groupId&gt;
+  &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;
+  &lt;version&gt;6.0.10.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.glassfish&lt;/groupId&gt;
+  &lt;artifactId&gt;javax.el&lt;/artifactId&gt;
+  &lt;version&gt;3.0.1-b09&lt;/version&gt;
+&lt;/dependency
+</code></pre><p>编写model编写需要参数校验的bean</p><pre class="language-text"><code>package com.xiaoxin.validator.model;
+
+import com.xiaoxin.validator.annotation.Gender;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.*;
+import java.util.Date;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午10:14
+ */
+@Getter
+@Setter
+@ToString
+public class Student {
+    @NotNull(message = &quot;姓名不能为空&quot;)
+    private String name;
+    //自定义注解限制为 枚举类型 0、1
+    @Gender
+    private int gender;
+    @Length(min=19,max=19,message = &quot;身份证号只能为19位&quot;)
+    private String identityId;
+    @Pattern(regexp=&quot;^(1)\\d{10}$&quot;, message=&quot;请输入正确的手机号&quot;)
+    private String phoneNumber;
+    @Email(message = &quot;请输入正确的email地址&quot;)
+    private String email;
+    @Past(message = &quot;生日不能大于当前时间&quot;)
+    @DateTimeFormat(pattern = &quot;yyyMMdd&quot;)
+    private Date birthDay;
+    @Max(value = 130,message = &quot;年龄不能超过130岁&quot;)
+    private int age;
+}
+</code></pre><p>@Gender为自定义限制注解，代码如下：</p><pre class="language-text"><code>package com.xiaoxin.validator.annotation;
+
+import com.xiaoxin.validator.GenderValidator;
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import java.lang.annotation.*;
+
+/**
+ * 自定义注解，性别只能为0、1
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午10:57
+ */
+@Target( { ElementType.ANNOTATION_TYPE, ElementType.METHOD, ElementType.FIELD })
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = {GenderValidator.class})
+public @interface Gender {
+
+    String message() default &quot;性别只能为0：女 1：男&quot;;
+
+    Class&lt;?&gt;[] groups() default {};
+    Class&lt;? extends Payload&gt;[] payload() default {};
+
+}
+
+</code></pre><pre class="language-text"><code>package com.xiaoxin.validator;
+
+import com.xiaoxin.validator.annotation.Gender;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import java.util.Arrays;
+
+/**
+ * 自定义注解相关的validator；性别只能为 0、1
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午10:59
+ */
+public class GenderValidator implements ConstraintValidator&lt;Gender, Integer&gt; {
+    private final Integer[] ALL_GENDERS = {0,1};
+
+    @Override
+    public boolean isValid(Integer integer, ConstraintValidatorContext constraintValidatorContext) {
+
+        if (Arrays.asList(ALL_GENDERS).contains(integer)) {
+            return true;
+        }
+        return false;
+    }
+}
+
+</code></pre><p>编写service，在需要参数校验的方法参数中增加校验注解，方法的参数如果为基本数据类型需要转换为包装类型。</p><pre class="language-text"><code>package com.xiaoxin.validator.service;
+
+import com.xiaoxin.validator.model.Student;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Max;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午11:04
+ */
+public interface StudentService {
+
+    Student addOneStudent(Student student,@Length(min=19,max=19)String identityId);
+
+    Student findOneStudent(String identityId);
+
+    void deleteOneStudent(@Length(min=19,max=19)String identityId);
+
+    void updateOneStudentAge(@Length(min=19,max=19)String identityId,
+                          @Max(value = 130,message = &quot;年龄不能超过130岁&quot;) Integer age);
+
+}
+</code></pre><p>编写实现类，注意：实现类中的方法参数上不能加注解</p><pre class="language-text"><code>package com.xiaoxin.aop;
+
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.hibernate.validator.HibernateValidator;
+import org.springframework.stereotype.Component;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.executable.ExecutableValidator;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.ResourceBundle;
+import java.util.Set;
+
+/**
+ * 参数的校验分为 bean的校验和其他类型参数校验，需要分开对应。
+ * 基本数据类型必须写成包装类型。
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午10:11
+ */
+@Aspect
+@Component
+@Slf4j
+public class ParameterValidationAspect {
+
+    @Around(&quot;execution(public * com.xiaoxin..*.service..*.*(..))&quot;)
+    public Object validateParameters(ProceedingJoinPoint joinPoint) throws Throwable {
+        String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        log.info(&quot;ParameterValidationAspect before &quot; + className + &quot;.&quot; + methodName);
+        if (null != args &amp;&amp; args.length &gt; 0) {
+            ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class).configure().buildValidatorFactory();
+            ExecutableValidator validator = validatorFactory.getValidator().forExecutables();
+            Validator beanValidator = validatorFactory.getValidator();
+            Set&lt;ConstraintViolation&lt;Object&gt;&gt; violations = new HashSet&lt;&gt;();
+            Class clazz = joinPoint.getSignature().getDeclaringType();
+            Class[] classTypes = new Class[args.length];
+            // 因为此处获取不带基本类型的数据类型，只能获取对应的包装类型，所以在service层需要写基本类型对应的包装类型的参数
+            for (int i=0;i&lt;args.length;i++) {
+                classTypes[i] = args[i].getClass();
+            }
+            Method method = clazz.getMethod(methodName,classTypes);
+            // 非java bean的参数校验
+            violations.addAll(validator.validateParameters(clazz.newInstance(),method,args));
+            // java Bean的参数校验
+            for (Object object : args) {
+                violations.addAll(beanValidator.validate(object));
+            }
+            dealWithValidations(violations);
+        }
+        return joinPoint.proceed();
+
+    }
+
+    private void dealWithValidations(Set&lt;ConstraintViolation&lt;Object&gt;&gt; violations) {
+        if (violations.size() &gt; 0) {
+            StringBuffer buf = new StringBuffer();
+            for (ConstraintViolation&lt;Object&gt; violation : violations) {
+                buf.append(&quot;-&quot; + violation.getPropertyPath().toString());
+                buf.append(violation.getMessage() + &quot;&lt;br/&gt;\n&quot;);
+            }
+            throw new IllegalArgumentException(buf.toString());
+        }
+    }
+}
+</code></pre><p>编写controller进行测试</p><pre class="language-text"><code>package com.xiaoxin.validator.controller;
+
+import com.xiaoxin.validator.model.Result;
+import com.xiaoxin.validator.model.ResultGenerator;
+import com.xiaoxin.validator.model.Student;
+import com.xiaoxin.validator.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午11:51
+ */
+@RestController
+@RequestMapping(&quot;student&quot;)
+public class StudentController {
+    @Autowired
+    private StudentService studentService;
+
+    @PostMapping(&quot;/addOne&quot;)
+    public Result addOneStudent(){
+        Student student = new Student();
+        student.setBirthDay(new Date());
+        student.setEmail(&quot;123163.com&quot;);
+        student.setGender(0);
+        student.setPhoneNumber(&quot;13987654320&quot;);
+        student.setName(&quot;韩梅&quot;);
+        student.setIdentityId(&quot;3412041900000000000&quot;);
+        student = studentService.addOneStudent(student,&quot;&quot;);
+        return new Result(student);
+    }
+
+    @PostMapping(&quot;/addOneStudent&quot;)
+    public Result addOneStudent(@RequestBody @Valid Student student, BindingResult bindingResult){
+
+        /**
+         * 参数校验
+         */
+        if(bindingResult.hasErrors()){
+            return ResultGenerator.genValidationResult(bindingResult);
+        }
+        return new Result(studentService.addOneStudent(student,&quot;3412041900000000000&quot;));
+    }
+
+    @GetMapping(&quot;/findOne&quot;)
+    public Result findOneStudent(@NotEmpty String identityId){
+        Student student =  studentService.findOneStudent(identityId);
+        return new Result(student);
+    }
+
+    @PostMapping(&quot;/deleteOne&quot;)
+    public Result deleteOneStudent(@RequestBody String identityId){
+        studentService.deleteOneStudent(identityId);
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @PostMapping(&quot;/updateAge&quot;)
+    public Result updateStudentAge(@RequestParam String identityId,@RequestParam int age){
+        studentService.updateOneStudentAge(identityId,age);
+        return ResultGenerator.genSuccessResult();
+    }
+}
+</code></pre><p>调用测试接口http://127.0.0.1:7788/student/addOne返回结果如下：</p><pre class="language-text"><code>{
+&quot;timestamp&quot;: &quot;2018-05-17T11:13:42.651+0000&quot;,
+&quot;status&quot;: 500,
+&quot;error&quot;: &quot;Internal Server Error&quot;,
+&quot;message&quot;: &quot;-email请输入正确的email地址&lt;br/&gt;\n-addOneStudent.arg1长度需要在19和19之间&lt;br/&gt;\n&quot;,
+&quot;path&quot;: &quot;/student/addOne&quot;
+}
+</code></pre></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/zhangyongxin/blog/whatHappenedWhenNewString/whatHappenedWhenNewString.html" class="prev">
+          从 String str = new String(&quot;abc&quot;);说开去
+        </a></span><span class="next"><a href="/zhangyongxin/blog/httpStatus.html">
+          常见的HTTP状态码
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/zhangyongxin/assets/js/5.00644bef.js" defer></script><script src="/zhangyongxin/assets/js/18.9adf530f.js" defer></script><script src="/zhangyongxin/assets/js/app.438c3593.js" defer></script>
+  </body>
+</html>

@@ -33,6 +33,7 @@ module.exports = {
           '/blog/designPattern/javaDesignPattern',
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
+          '/blog/validateParameterforYourService',
           '/blog/httpStatus',
           '/blog/springNotes1',
           '/blog/springNotes2',
