@@ -1,11 +1,11 @@
-# 在Spring项目中通过切面进行参数校验
+# 在项目中通过切面统一进行参数校验
 <authorAndTime dateTime='2018-05-17 18:51:15'/>
 
 > 一直以来项目中的参数校验零零散散，散布在controller或者service的方法的开始部分。统一处理可以使代码优雅高效。<br/>
 另外参数校验在controller做还是service做呢？个人觉得service层才最合理，因为service可以复用。
 
-下面我们来看看怎么在service层加入切面，在切面上如何进行参数校验吧。
-引入依赖
+下面我们来看看怎么在service层加入切面，在切面上如何进行参数校验吧。<br/>
+引入依赖:
 ```
 <dependency>
   <groupId>org.hibernate.validator</groupId>
@@ -18,7 +18,7 @@
   <version>3.0.1-b09</version>
 </dependency
 ```
-编写model编写需要参数校验的bean
+编写model编写需要参数校验的bean:
 ```
 package com.xiaoxin.validator.model;
 
@@ -298,6 +298,7 @@ public class StudentController {
 "path": "/student/addOne"
 }
 ```
+参考： [http://hibernate.org/validator/](http://hibernate.org/validator/)
 
 
 
