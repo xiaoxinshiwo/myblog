@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/zhangyongxin/logo.ico">
     
-    <link rel="preload" href="/zhangyongxin/assets/css/19.styles.ff0fe6a0.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.8fc27e86.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/5.c4f33173.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/18.9adf530f.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/6.70aaf9e0.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.a8e02caa.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.abd88078.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.b9087ae4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.d02e1b8e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.95c9cb01.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.a1f6fdcf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.34a00ebf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.87b12fc8.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.3f9ca4ce.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.1efa6b34.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.461c489e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.7b330893.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.78184bb6.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.70244d8a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.c89c113a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.7307e3cc.js">
+    <link rel="preload" href="/zhangyongxin/assets/css/19.styles.ff0fe6a0.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.7e30feeb.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/5.e2fbfade.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/18.9adf530f.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/6.70aaf9e0.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.a8e02caa.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.abd88078.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.b9087ae4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.d02e1b8e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.95c9cb01.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.a1f6fdcf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.34a00ebf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.87b12fc8.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.3f9ca4ce.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.1efa6b34.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.461c489e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.7b330893.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.78184bb6.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.1dc66189.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.c89c113a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.7307e3cc.js">
     <link rel="stylesheet" href="/zhangyongxin/assets/css/19.styles.ff0fe6a0.css">
   </head>
   <body>
@@ -88,7 +88,7 @@ public @interface Gender {
 
 }
 
-</code></pre><pre class="language-text"><code>package com.xiaoxin.validator;
+</code></pre><p>编写@Gender注解validator实现校验任务</p><pre class="language-text"><code>package com.xiaoxin.validator;
 
 import com.xiaoxin.validator.annotation.Gender;
 
@@ -114,6 +114,22 @@ public class GenderValidator implements ConstraintValidator&lt;Gender, Integer&g
     }
 }
 
+</code></pre><p>编写自定义注解@NeedValidate用于统一切面处理</p><pre class="language-text"><code>package com.xiaoxin.validator.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/18 上午9:30
+ */
+@Target( {ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NeedValidate {
+}
+
 </code></pre><p>编写service，在需要参数校验的方法参数中增加校验注解，方法的参数如果为基本数据类型需要转换为包装类型。</p><pre class="language-text"><code>package com.xiaoxin.validator.service;
 
 import com.xiaoxin.validator.model.Student;
@@ -137,15 +153,62 @@ public interface StudentService {
                           @Max(value = 130,message = &quot;年龄不能超过130岁&quot;) Integer age);
 
 }
-</code></pre><p>编写实现类，注意：实现类中的方法参数上不能加注解</p><pre class="language-text"><code>package com.xiaoxin.aop;
+</code></pre><p>编写Service实现类 在需要切面校验的方法上添加@NeedValidate注解</p><pre class="language-text"><code>package com.xiaoxin.validator.service;
+
+import com.xiaoxin.validator.annotation.NeedValidate;
+import com.xiaoxin.validator.model.Student;
+import com.xiaoxin.validator.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午11:05
+ */
+@Slf4j
+@Service
+public class StudentServiceImpl implements StudentService {
+    @Override
+    public Student addOneStudent(Student student,String identityId) {
+        log.info(&quot;add one student:&quot;+student);
+        return student;
+    }
+
+    @Override
+    public Student findOneStudent(String identityId) {
+        Student student = new Student();
+        student.setBirthDay(new Date());
+        student.setEmail(&quot;123@163.com&quot;);
+        student.setGender(0);
+        student.setPhoneNumber(&quot;13987654320&quot;);
+        student.setName(&quot;韩梅&quot;);
+        student.setIdentityId(identityId);
+        return student;
+    }
+
+    @Override
+    public void deleteOneStudent(String identityId) {
+        log.info(&quot;deleted one student:{}&quot;,identityId);
+    }
+
+    @Override
+    @NeedValidate
+    public void updateOneStudentAge(String identityId,Integer age) {
+        log.info(&quot;updateOneStudentAge:{},age:{}&quot;,identityId,age);
+    }
+}
+
+</code></pre><p>编写切面统一处理校验逻辑</p><pre class="language-text"><code>package com.xiaoxin.aop;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.stereotype.Component;
 
@@ -156,12 +219,14 @@ import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
 import java.lang.reflect.Method;
 import java.util.HashSet;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 /**
  * 参数的校验分为 bean的校验和其他类型参数校验，需要分开对应。
  * 基本数据类型必须写成包装类型。
+ * 方法上的validate如@Max等写在service interface的方法参数上，
+ *
+ * @NeedValidate 注解写在实现类上
  * @Auther zhangyongxin
  * @date 2018/5/17 上午10:11
  */
@@ -170,7 +235,8 @@ import java.util.Set;
 @Slf4j
 public class ParameterValidationAspect {
 
-    @Around(&quot;execution(public * com.xiaoxin..*.service..*.*(..))&quot;)
+    //标注了@NeedValidate注解的
+    @Around(&quot;@annotation(com.xiaoxin.validator.annotation.NeedValidate)&quot;)
     public Object validateParameters(ProceedingJoinPoint joinPoint) throws Throwable {
         String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
@@ -184,12 +250,12 @@ public class ParameterValidationAspect {
             Class clazz = joinPoint.getSignature().getDeclaringType();
             Class[] classTypes = new Class[args.length];
             // 因为此处获取不带基本类型的数据类型，只能获取对应的包装类型，所以在service层需要写基本类型对应的包装类型的参数
-            for (int i=0;i&lt;args.length;i++) {
+            for (int i = 0; i &lt; args.length; i++) {
                 classTypes[i] = args[i].getClass();
             }
-            Method method = clazz.getMethod(methodName,classTypes);
+            Method method = clazz.getMethod(methodName, classTypes);
             // 非java bean的参数校验
-            violations.addAll(validator.validateParameters(clazz.newInstance(),method,args));
+            violations.addAll(validator.validateParameters(clazz.newInstance(), method, args));
             // java Bean的参数校验
             for (Object object : args) {
                 violations.addAll(beanValidator.validate(object));
@@ -211,6 +277,7 @@ public class ParameterValidationAspect {
         }
     }
 }
+
 </code></pre><p>编写controller进行测试</p><pre class="language-text"><code>package com.xiaoxin.validator.controller;
 
 import com.xiaoxin.validator.model.Result;
@@ -292,6 +359,6 @@ public class StudentController {
           常见的HTTP状态码
         </a> →
       </span></p></div></div></div></div>
-    <script src="/zhangyongxin/assets/js/5.c4f33173.js" defer></script><script src="/zhangyongxin/assets/js/18.9adf530f.js" defer></script><script src="/zhangyongxin/assets/js/app.8fc27e86.js" defer></script>
+    <script src="/zhangyongxin/assets/js/5.e2fbfade.js" defer></script><script src="/zhangyongxin/assets/js/18.9adf530f.js" defer></script><script src="/zhangyongxin/assets/js/app.7e30feeb.js" defer></script>
   </body>
 </html>

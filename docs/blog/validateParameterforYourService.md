@@ -87,6 +87,7 @@ public @interface Gender {
 }
 
 ```
+编写@Gender注解validator实现校验任务
 ```
 package com.xiaoxin.validator;
 
@@ -112,6 +113,25 @@ public class GenderValidator implements ConstraintValidator<Gender, Integer> {
         }
         return false;
     }
+}
+
+```
+编写自定义注解@NeedValidate用于统一切面处理
+```
+package com.xiaoxin.validator.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/18 上午9:30
+ */
+@Target( {ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NeedValidate {
 }
 
 ```
@@ -141,17 +161,67 @@ public interface StudentService {
 
 }
 ```
-编写实现类，注意：实现类中的方法参数上不能加注解
+编写Service实现类 在需要切面校验的方法上添加@NeedValidate注解
+```
+package com.xiaoxin.validator.service;
+
+import com.xiaoxin.validator.annotation.NeedValidate;
+import com.xiaoxin.validator.model.Student;
+import com.xiaoxin.validator.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+
+/**
+ * @Auther zhangyongxin
+ * @date 2018/5/17 上午11:05
+ */
+@Slf4j
+@Service
+public class StudentServiceImpl implements StudentService {
+    @Override
+    public Student addOneStudent(Student student,String identityId) {
+        log.info("add one student:"+student);
+        return student;
+    }
+
+    @Override
+    public Student findOneStudent(String identityId) {
+        Student student = new Student();
+        student.setBirthDay(new Date());
+        student.setEmail("123@163.com");
+        student.setGender(0);
+        student.setPhoneNumber("13987654320");
+        student.setName("韩梅");
+        student.setIdentityId(identityId);
+        return student;
+    }
+
+    @Override
+    public void deleteOneStudent(String identityId) {
+        log.info("deleted one student:{}",identityId);
+    }
+
+    @Override
+    @NeedValidate
+    public void updateOneStudentAge(String identityId,Integer age) {
+        log.info("updateOneStudentAge:{},age:{}",identityId,age);
+    }
+}
+
+```
+编写切面统一处理校验逻辑
 ```
 package com.xiaoxin.aop;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.stereotype.Component;
 
@@ -162,12 +232,14 @@ import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
 import java.lang.reflect.Method;
 import java.util.HashSet;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 /**
  * 参数的校验分为 bean的校验和其他类型参数校验，需要分开对应。
  * 基本数据类型必须写成包装类型。
+ * 方法上的validate如@Max等写在service interface的方法参数上，
+ *
+ * @NeedValidate 注解写在实现类上
  * @Auther zhangyongxin
  * @date 2018/5/17 上午10:11
  */
@@ -176,7 +248,8 @@ import java.util.Set;
 @Slf4j
 public class ParameterValidationAspect {
 
-    @Around("execution(public * com.xiaoxin..*.service..*.*(..))")
+    //标注了@NeedValidate注解的
+    @Around("@annotation(com.xiaoxin.validator.annotation.NeedValidate)")
     public Object validateParameters(ProceedingJoinPoint joinPoint) throws Throwable {
         String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
@@ -190,12 +263,12 @@ public class ParameterValidationAspect {
             Class clazz = joinPoint.getSignature().getDeclaringType();
             Class[] classTypes = new Class[args.length];
             // 因为此处获取不带基本类型的数据类型，只能获取对应的包装类型，所以在service层需要写基本类型对应的包装类型的参数
-            for (int i=0;i<args.length;i++) {
+            for (int i = 0; i < args.length; i++) {
                 classTypes[i] = args[i].getClass();
             }
-            Method method = clazz.getMethod(methodName,classTypes);
+            Method method = clazz.getMethod(methodName, classTypes);
             // 非java bean的参数校验
-            violations.addAll(validator.validateParameters(clazz.newInstance(),method,args));
+            violations.addAll(validator.validateParameters(clazz.newInstance(), method, args));
             // java Bean的参数校验
             for (Object object : args) {
                 violations.addAll(beanValidator.validate(object));
@@ -217,6 +290,7 @@ public class ParameterValidationAspect {
         }
     }
 }
+
 ```
 编写controller进行测试
 ```
