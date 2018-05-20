@@ -84,3 +84,13 @@ These are:``` call, get, set, preinitialization, staticinitialization, initializ
 CGLIB proxying works by generating a subclass of the target class at runtime. Spring configures this generated subclass to delegate method calls to the original target: the subclass is used to implement the Decorator pattern, weaving in the advice.
 CGLIB proxying should generally be transparent to users. However, there are some issues to consider:
 > Final methods can’t be advised, as they can’t be overridden.
+48. 数据库事物管理 PlatformTransactionManager
+>JtaTransactionManager 分布式事物管理
+This transaction manager is appropriate for handling distributed transactions,
+  i.e. transactions that span multiple resources, and for controlling transactions on
+  application server resources (e.g. JDBC DataSources available in JNDI) in general.
+  For a single JDBC DataSource, DataSourceTransactionManager is perfectly sufficient,
+  and for accessing a single resource with Hibernate (including transactional cache),
+  HibernateTransactionManager is appropriate, for example.
+
+
