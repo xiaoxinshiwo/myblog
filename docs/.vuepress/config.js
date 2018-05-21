@@ -48,7 +48,8 @@ module.exports = {
           '/reprint/threadLocal',
           '/reprint/stanfordClassMemory',
           '/reprint/javaInterview/javaInterview1',
-          '/reprint/javaInterview/javaInterview2'
+          '/reprint/javaInterview/javaInterview2',
+          '/reprint/CORS support in Spring framework'
         ]
       }
     ]
