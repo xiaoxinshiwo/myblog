@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>章永新的博客 | CORS support in Spring Framework</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/zhangyongxin/logo.ico">
+    
+    <link rel="preload" href="/zhangyongxin/assets/css/20.styles.06bf24be.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.eb7eeab2.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/4.cc4cbf33.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/19.84796a55.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/6.bdf699e1.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.10d5727b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.28384acf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.b82bcd82.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.1e1aa1d9.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.45c7f16c.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.a765726b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.a977776a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.df6fc901.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.70cc808d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.f66a4bcd.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.43a32f8b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.11b90079.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.423c54cb.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.2e51716b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.d91d7878.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.0f6c0e75.js"><link rel="prefetch" href="/zhangyongxin/assets/js/18.2eca3d13.js">
+    <link rel="stylesheet" href="/zhangyongxin/assets/css/20.styles.06bf24be.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/zhangyongxin/" class="home-link router-link-active"><!----><span class="site-name">
+      章永新的博客
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav></div></header><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav><ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>博客</span><span class="arrow down"></span></p><!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>转载</span><span class="arrow up"></span></p><ul class="sidebar-group-items"><li><a href="/zhangyongxin/reprint/threadLocal.html" class="sidebar-link">java.lang.ThreadLocal 分析</a></li><li><a href="/zhangyongxin/reprint/stanfordClassMemory.html" class="sidebar-link">斯坦福大学公开课-内存</a></li><li><a href="/zhangyongxin/reprint/javaInterview/javaInterview1.html" class="sidebar-link">Java面试通关要点 汇总集【最终版】</a></li><li><a href="/zhangyongxin/reprint/javaInterview/javaInterview2.html" class="sidebar-link">Java面试题</a></li><li><a href="/zhangyongxin/reprint/CORS support in Spring framework.html" class="active sidebar-link">CORS support in Spring Framework</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="cors-support-in-spring-framework"><a href="#cors-support-in-spring-framework" aria-hidden="true" class="header-anchor">#</a> CORS support in Spring Framework</h1><div><p>章永新 2018-05-21 15:08:11</p><hr></div><p>ENGINEERING   SÉBASTIEN DELEUZE   JUNE 08, 2015
+For security reasons, browsers prohibit AJAX calls to resources residing outside the current origin. For example, as you’re checking your bank account in one tab, you could have the evil.com website in another tab. The scripts from evil.com shouldn’t be able to make AJAX requests to your bank API (withdrawing money from your account!) using your credentials.</p><p>Cross-origin resource sharing (CORS) is a W3C specification implemented by most browsers that allows you to specify in a flexible way what kind of cross domain requests are authorized, instead of using some less secured and less powerful hacks like IFrame or JSONP.</p><p>Spring Framework 4.2 GA provides first class support for CORS out-of-the-box, giving you an easier and more powerful way to configure it than typical filter based solutions.</p><p>Spring MVC provides high-level configuration facilities, described bellow.</p><p>Controller method CORS configuration
+You can add to your @RequestMapping annotated handler method a @CrossOrigin annotation in order to enable CORS on it (by default @CrossOrigin allows all origins and the HTTP methods specified in the @RequestMapping annotation):</p><pre class="language-text"><code>@RestController
+@RequestMapping(&quot;/account&quot;)
+public class AccountController {
+
+	@CrossOrigin
+	@GetMapping(&quot;/{id}&quot;)
+	public Account retrieve(@PathVariable Long id) {
+		// ...
+	}
+
+	@DeleteMapping(&quot;/{id}&quot;)
+	public void remove(@PathVariable Long id) {
+		// ...
+	}
+}
+</code></pre><p>It is also possible to enable CORS for the whole controller:</p><pre class="language-text"><code>@CrossOrigin(origins = &quot;http://domain2.com&quot;, maxAge = 3600)
+@RestController
+@RequestMapping(&quot;/account&quot;)
+public class AccountController {
+
+	@GetMapping(&quot;/{id}&quot;)
+	public Account retrieve(@PathVariable Long id) {
+		// ...
+	}
+
+	@DeleteMapping(&quot;/{id}&quot;)
+	public void remove(@PathVariable Long id) {
+		// ...
+	}
+}
+</code></pre><p>In this example CORS support is enabled for both retrieve() and remove() handler methods, and you can also see how you can customize the CORS configuration using @CrossOrigin attributes.</p><p>You can even use both controller and method level CORS configurations, Spring will then combine both annotation attributes to create a merged CORS configuration.</p><pre class="language-text"><code>@CrossOrigin(maxAge = 3600)
+@RestController
+@RequestMapping(&quot;/account&quot;)
+public class AccountController {
+
+	@CrossOrigin(origins = &quot;http://domain2.com&quot;)
+	@GetMapping(&quot;/{id}&quot;)
+	public Account retrieve(@PathVariable Long id) {
+		// ...
+	}
+
+	@DeleteMapping(&quot;/{id}&quot;)
+	public void remove(@PathVariable Long id) {
+		// ...
+	}
+}
+</code></pre><p>If you are using Spring Security, make sure to enable CORS at Spring Security level as well to allow it to leverage the configuration defined at Spring MVC level.</p><pre class="language-text"><code>@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.cors().and()...
+	}
+}
+</code></pre><p>Global CORS configuration
+In addition to fine-grained, annotation-based configuration you’ll probably want to define some global CORS configuration as well. This is similar to using filters but can be declared withing Spring MVC and combined with fine-grained @CrossOrigin configuration. By default all origins and GET, HEAD and POST methods are allowed.</p><p>JavaConfig
+Enabling CORS for the whole application is as simple as:</p><pre class="language-text"><code>@Configuration
+@EnableWebMvc
+public class WebConfig extends WebMvcConfigurerAdapter {
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping(&quot;/**&quot;);
+	}
+}
+</code></pre><p>If you are using Spring Boot, it is recommended to just declare a WebMvcConfigurer bean as following:</p><pre class="language-text"><code>@Configuration
+public class MyConfiguration {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping(&quot;/**&quot;);
+            }
+        };
+    }
+}
+</code></pre><p>You can easily change any properties, as well as only apply this CORS configuration to a specific path pattern:</p><pre class="language-text"><code>@Override
+public void addCorsMappings(CorsRegistry registry) {
+	registry.addMapping(&quot;/api/**&quot;)
+		.allowedOrigins(&quot;http://domain2.com&quot;)
+		.allowedMethods(&quot;PUT&quot;, &quot;DELETE&quot;)
+			.allowedHeaders(&quot;header1&quot;, &quot;header2&quot;, &quot;header3&quot;)
+		.exposedHeaders(&quot;header1&quot;, &quot;header2&quot;)
+		.allowCredentials(false).maxAge(3600);
+}
+</code></pre><p>If you are using Spring Security, make sure to enable CORS at Spring Security level as well to allow it to leverage the configuration defined at Spring MVC level.</p><p>XML namespace
+It is also possible to configure CORS with the mvc XML namespace.</p><p>This minimal XML configuration enable CORS on /** path pattern with the same default properties than the JavaConfig one:</p><pre class="language-text"><code>&lt;mvc:cors&gt;
+	&lt;mvc:mapping path=&quot;/**&quot; /&gt;
+&lt;/mvc:cors&gt;
+</code></pre><p>It is also possible to declare several CORS mappings with customized properties:</p><pre class="language-text"><code>&lt;mvc:cors&gt;
+
+	&lt;mvc:mapping path=&quot;/api/**&quot;
+		allowed-origins=&quot;http://domain1.com, http://domain2.com&quot;
+		allowed-methods=&quot;GET, PUT&quot;
+		allowed-headers=&quot;header1, header2, header3&quot;
+		exposed-headers=&quot;header1, header2&quot; allow-credentials=&quot;false&quot;
+		max-age=&quot;123&quot; /&gt;
+
+	&lt;mvc:mapping path=&quot;/resources/**&quot;
+		allowed-origins=&quot;http://domain1.com&quot; /&gt;
+
+&lt;/mvc:cors&gt;
+</code></pre><p>If you are using Spring Security, don’t forget to enable CORS at Spring Security level as well:</p><pre class="language-text"><code>&lt;http&gt;
+	&lt;!-- Default to Spring MVC's CORS configuration --&gt;
+	&lt;cors /&gt;
+	...
+&lt;/http&gt;
+</code></pre><p>How does it work?</p><blockquote><p>CORS requests (including preflight ones with an OPTIONS method) are automatically dispatched to the various HandlerMappings registered. They handle CORS preflight requests and intercept CORS simple and actual requests thanks to a CorsProcessor implementation (DefaultCorsProcessor by default) in order to add the relevant CORS response headers (like Access-Control-Allow-Origin). CorsConfiguration allows you to specify how the CORS requests should be processed: allowed origins, headers, methods, etc. It can be provided in various ways:</p></blockquote><p>AbstractHandlerMapping#setCorsConfiguration() allows to specify a Map with several CorsConfiguration mapped on path patterns like /api/**
+Subclasses can provide their own CorsConfiguration by overriding AbstractHandlerMapping#getCorsConfiguration(Object, HttpServletRequest) method
+Handlers can implement CorsConfigurationSource interface (like ResourceHttpRequestHandler now does) in order to provide a CorsConfiguration for each request.
+Filter based CORS support
+As an alternative to other methods presented above, Spring Framework also provides a CorsFilter. In that case, instead of using @CrossOrigin or WebMvcConfigurer#addCorsMappings(CorsRegistry), you can for example declare the filter as following in your Spring Boot application:</p><pre class="language-text"><code>@Configuration
+public class MyConfiguration {
+
+	@Bean
+	public FilterRegistrationBean corsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowCredentials(true);
+		config.addAllowedOrigin(&quot;http://domain1.com&quot;);
+		config.addAllowedHeader(&quot;*&quot;);
+		config.addAllowedMethod(&quot;*&quot;);
+		source.registerCorsConfiguration(&quot;/**&quot;, config);
+		FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+		bean.setOrder(0);
+		return bean;
+	}
+}
+</code></pre><p>转载于 <a href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank" rel="noopener noreferrer">https://spring.io/blog/2015/06/08/cors-support-in-spring-framework</a></p></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/zhangyongxin/reprint/javaInterview/javaInterview2.html" class="prev">
+          Java面试题
+        </a></span><!----></p></div></div></div></div>
+    <script src="/zhangyongxin/assets/js/4.cc4cbf33.js" defer></script><script src="/zhangyongxin/assets/js/19.84796a55.js" defer></script><script src="/zhangyongxin/assets/js/app.eb7eeab2.js" defer></script>
+  </body>
+</html>
