@@ -34,6 +34,7 @@ module.exports = {
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
           '/blog/validateParameterforYourService',
+          '/blog/dubboMutiIp',
           '/blog/httpStatus',
           '/blog/springNotes1',
           '/blog/springNotes2',
