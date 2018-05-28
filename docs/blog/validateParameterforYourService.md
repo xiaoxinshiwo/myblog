@@ -372,6 +372,37 @@ public class StudentController {
 "path": "/student/addOne"
 }
 ```
+最后Bean嵌套集合或者Bean的注解写法：
+```
+package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
+
+public class Car {
+
+    private List<@NotNull @Valid Person> passengers = new ArrayList<Person>();
+
+    private Map<@Valid Part, List<@Valid Manufacturer>> partManufacturers = new HashMap<>();
+
+    //...
+}
+package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
+
+public class Part {
+
+    @NotNull
+    private String name;
+
+    //...
+}
+package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
+
+public class Manufacturer {
+
+    @NotNull
+    private String name;
+
+    //...
+}
+```
 参考： [http://hibernate.org/validator/](http://hibernate.org/validator/)
 
 
