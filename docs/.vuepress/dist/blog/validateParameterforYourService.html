@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/zhangyongxin/logo.ico">
     
-    <link rel="preload" href="/zhangyongxin/assets/css/21.styles.f50794bf.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.15a16b63.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/6.937e8338.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/20.9db5e0de.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/7.14b2d49c.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.dc746b11.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.bd50d1d3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.6011bac5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.ad02543b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.cbcf769b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.3755b7b3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.7319da1a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.6b04dc52.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.54a399a7.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.756c5e71.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.ca1e27a5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.d90ba1b3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.167b36e3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.b6053d04.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.619c7d09.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.afddda04.js"><link rel="prefetch" href="/zhangyongxin/assets/js/18.9f8c0ed5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/19.6f1938c1.js">
+    <link rel="preload" href="/zhangyongxin/assets/css/21.styles.f50794bf.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.2106bdb3.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/6.c45e2277.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/20.9db5e0de.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/7.14b2d49c.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.dc746b11.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.bd50d1d3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.6011bac5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.ad02543b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.cbcf769b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.3755b7b3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.7319da1a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.6b04dc52.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.54a399a7.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.756c5e71.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.ca1e27a5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.d90ba1b3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.167b36e3.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.b6053d04.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.619c7d09.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.afddda04.js"><link rel="prefetch" href="/zhangyongxin/assets/js/18.9f8c0ed5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/19.6f1938c1.js">
     <link rel="stylesheet" href="/zhangyongxin/assets/css/21.styles.f50794bf.css">
   </head>
   <body>
@@ -209,6 +209,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.stereotype.Component;
 
@@ -222,40 +223,32 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 参数的校验分为 bean的校验和其他类型参数校验，需要分开对应。
- * 基本数据类型必须写成包装类型。
- * 方法上的validate如@Max等写在service interface的方法参数上，
+ * 参数校验分为bean的和非bean的，bean的参数校验的注解按照代码生成的即可；
+ * 非bean的也是使用原来的注解，只不过需要声明在service上。
  *
- * @NeedValidate 注解写在实现类上
  * @Auther zhangyongxin
- * @date 2018/5/17 上午10:11
+ * @date 2018/5/25 下午1:07
  */
-@Aspect
-@Component
 @Slf4j
+@Component
+@Aspect
 public class ParameterValidationAspect {
+    private static final String SEMICOLON = &quot;;&quot;;
 
     //标注了@NeedValidate注解的
     @Around(&quot;@annotation(com.xiaoxin.validator.annotation.NeedValidate)&quot;)
     public Object validateParameters(ProceedingJoinPoint joinPoint) throws Throwable {
-        String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-        String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
-        log.info(&quot;ParameterValidationAspect before &quot; + className + &quot;.&quot; + methodName);
         if (null != args &amp;&amp; args.length &gt; 0) {
             ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class).configure().buildValidatorFactory();
             ExecutableValidator validator = validatorFactory.getValidator().forExecutables();
             Validator beanValidator = validatorFactory.getValidator();
             Set&lt;ConstraintViolation&lt;Object&gt;&gt; violations = new HashSet&lt;&gt;();
             Class clazz = joinPoint.getSignature().getDeclaringType();
-            Class[] classTypes = new Class[args.length];
-            // 因为此处获取不带基本类型的数据类型，只能获取对应的包装类型，所以在service层需要写基本类型对应的包装类型的参数
-            for (int i = 0; i &lt; args.length; i++) {
-                classTypes[i] = args[i].getClass();
-            }
-            Method method = clazz.getMethod(methodName, classTypes);
+            MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+            Method targetMethod = methodSignature.getMethod();
             // 非java bean的参数校验
-            violations.addAll(validator.validateParameters(clazz.newInstance(), method, args));
+            violations.addAll(validator.validateParameters(clazz.newInstance(), targetMethod, args));
             // java Bean的参数校验
             for (Object object : args) {
                 violations.addAll(beanValidator.validate(object));
@@ -270,13 +263,16 @@ public class ParameterValidationAspect {
         if (violations.size() &gt; 0) {
             StringBuffer buf = new StringBuffer();
             for (ConstraintViolation&lt;Object&gt; violation : violations) {
-                buf.append(&quot;-&quot; + violation.getPropertyPath().toString());
-                buf.append(violation.getMessage() + &quot;&lt;br/&gt;\n&quot;);
+                buf.append(violation.getPropertyPath().toString());
+                buf.append(violation.getMessage());
+                buf.append(SEMICOLON);
             }
             throw new IllegalArgumentException(buf.toString());
         }
     }
 }
+
+
 
 </code></pre><p>编写controller进行测试</p><pre class="language-text"><code>package com.xiaoxin.validator.controller;
 
@@ -352,6 +348,34 @@ public class StudentController {
 &quot;message&quot;: &quot;-email请输入正确的email地址&lt;br/&gt;\n-addOneStudent.arg1长度需要在19和19之间&lt;br/&gt;\n&quot;,
 &quot;path&quot;: &quot;/student/addOne&quot;
 }
+</code></pre><p>最后Bean嵌套集合或者Bean的注解写法：</p><pre class="language-text"><code>package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
+
+public class Car {
+
+    private List&lt;@NotNull @Valid Person&gt; passengers = new ArrayList&lt;Person&gt;();
+
+    private Map&lt;@Valid Part, List&lt;@Valid Manufacturer&gt;&gt; partManufacturers = new HashMap&lt;&gt;();
+
+    //...
+}
+package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
+
+public class Part {
+
+    @NotNull
+    private String name;
+
+    //...
+}
+package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
+
+public class Manufacturer {
+
+    @NotNull
+    private String name;
+
+    //...
+}
 </code></pre><p>参考： <a href="http://hibernate.org/validator/" target="_blank" rel="noopener noreferrer">http://hibernate.org/validator/</a></p></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
         ← <a href="/zhangyongxin/blog/whatHappenedWhenNewString/whatHappenedWhenNewString.html" class="prev">
           从 String str = new String(&quot;abc&quot;);说开去
@@ -359,6 +383,6 @@ public class StudentController {
           记一次dubbo多Ip访问的问题
         </a> →
       </span></p></div></div></div></div>
-    <script src="/zhangyongxin/assets/js/6.937e8338.js" defer></script><script src="/zhangyongxin/assets/js/20.9db5e0de.js" defer></script><script src="/zhangyongxin/assets/js/app.15a16b63.js" defer></script>
+    <script src="/zhangyongxin/assets/js/6.c45e2277.js" defer></script><script src="/zhangyongxin/assets/js/20.9db5e0de.js" defer></script><script src="/zhangyongxin/assets/js/app.2106bdb3.js" defer></script>
   </body>
 </html>
