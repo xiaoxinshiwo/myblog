@@ -33,6 +33,7 @@ module.exports = {
           '/blog/designPattern/javaDesignPattern',
           '/blog/docker',
           '/blog/jmx',
+          '/blog/maven',
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
           '/blog/validateParameterforYourService',
