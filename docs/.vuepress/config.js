@@ -31,6 +31,8 @@ module.exports = {
           '/blog/knowledgeStack',
           '/blog/bookList',
           '/blog/designPattern/javaDesignPattern',
+          '/blog/docker',
+          '/blog/jmx',
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
           '/blog/validateParameterforYourService',
