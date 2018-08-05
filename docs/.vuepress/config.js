@@ -34,6 +34,7 @@ module.exports = {
           '/blog/docker',
           '/blog/jmx',
           '/blog/maven',
+          '/blog/crossTGW',
           '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
           '/blog/validateParameterforYourService',
