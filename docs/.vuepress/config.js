@@ -39,6 +39,7 @@ module.exports = {
           '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
           '/blog/validateParameterforYourService',
           '/blog/dubboMutiIp',
+          '/blog/javaPassByValue',
           '/blog/httpStatus',
           '/blog/springNotes1',
           '/blog/springNotes2',
