@@ -40,6 +40,7 @@ module.exports = {
           '/blog/validateParameterforYourService',
           '/blog/dubboMutiIp',
           '/blog/mysqlSelectForupdate',
+          'blog/deadLockSolve',
           '/blog/javaPassByValue',
           '/blog/httpStatus',
           '/blog/springNotes1',
