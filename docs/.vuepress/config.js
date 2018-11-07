@@ -1,65 +1,42 @@
 module.exports = {
-  title: '章永新的博客',
-  base: "/zhangyongxin/",
+  theme: 'yubisaki',
+  title: '博客',
+  description: `zhangyongxin's blog`,
   head: [
-    ['link', { rel: 'icon', href: `/logo.ico` }]
+    ['link', { rel: 'icon', href: `/favicon.ico` }]
   ],
-  locales: {
-    '/': {
-      lang: 'zh-CN',
-    }
+  base: '/zhangyongxin/',
+  repo: 'https://github.com/xiaoxinshiwo/myblog',
+  dest: './docs/.vuepress/dist',
+  ga: '',
+  serviceWorker: true,
+  evergreen: true,
+  themeConfig: {
+    background: `/img/`,
+    github: 'xiaoxinshiwo',
+    logo: '/img/logo.jpg',
+    accentColor: '#5d107a',
+    per_page: 6,
+    date_format: 'yyyy-MM-dd HH:mm:ss',
+    nav: [
+      {text: 'About', link: '/about/about'},
+      {text: 'Github', link: 'https://github.com/xiaoxinshiwo'}
+    ]
   },
   markdown: {
-    config: md => {
-      md.use(require('markdown-it-anchor'))
+    anchor: {
+      permalink: true
     },
     toc: {
-      includeLevel: [3,4] // 可以使用 [[toc]] 将本页的目录进行抽取
+      includeLevel: [1, 2]
+    },
+    config: md => {
+      // 使用更多 markdown-it 插件！
+      md.use(require('markdown-it-task-lists'))
+        .use(require('markdown-it-imsize'), { autofill: true })
     }
   },
-  themeConfig: {
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: '关于', link: '/about/about' },
-    ],
-    sidebar: [
-      {
-        title: '博客',
-        collapsable: true,
-        children: [
-          '/blog/howToBuildMyOwnSite/howToBuildMyOwnSite',
-          '/blog/knowledgeStack',
-          '/blog/bookList',
-          '/blog/designPattern/javaDesignPattern',
-          '/blog/docker',
-          '/blog/jmx',
-          '/blog/maven',
-          '/blog/crossTGW',
-          '/blog/shortMsgCannotReveive/prodShortMsgCannotReceive',
-          '/blog/whatHappenedWhenNewString/whatHappenedWhenNewString',
-          '/blog/validateParameterforYourService',
-          '/blog/dubboMutiIp',
-          '/blog/mysqlSelectForupdate',
-          'blog/deadLockSolve',
-          '/blog/javaPassByValue',
-          '/blog/httpStatus',
-          '/blog/springNotes1',
-          '/blog/springNotes2',
-          '/blog/springNotes3',
-          '/blog/interestingThoughts/interestingThoughts'
-        ]
-      },
-      {
-        title: '转载',
-        collapsable: true,
-        children: [
-          '/reprint/threadLocal',
-          '/reprint/stanfordClassMemory',
-          '/reprint/javaInterview/javaInterview1',
-          '/reprint/javaInterview/javaInterview2',
-          '/reprint/CORS support in Spring framework'
-        ]
-      }
-    ]
-  }
+  postcss: {
+    plugins: [require('autoprefixer')]
+  },
 }

@@ -13,8 +13,12 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "autoprefixer": "^9.3.1",
     "markdown-it-anchor": "^4.0.0",
-    "vue": "^2.5.2"
+    "markdown-it-imsize": "^2.0.1",
+    "markdown-it-task-lists": "^2.1.1",
+    "vue": "^2.5.2",
+    "vuepress-theme-yubisaki": "^3.0.3"
   },
   "devDependencies": {
     "eslint": "^4.15.0",
