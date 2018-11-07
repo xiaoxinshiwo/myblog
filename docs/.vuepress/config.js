@@ -12,7 +12,7 @@ module.exports = {
   serviceWorker: true,
   evergreen: true,
   themeConfig: {
-    background: `/img/`,
+    background: `https://s1.ax1x.com/2018/11/07/i7AOmV.jpg`,
     github: 'xiaoxinshiwo',
     logo: '/img/logo.jpg',
     accentColor: '#5d107a',

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>章永新的博客 | docker 入门</title>
-    <meta name="description" content="">
-    <link rel="icon" href="/zhangyongxin/logo.ico">
+    <title>docker 入门 | 博客</title>
+    <meta name="description" content="zhangyongxin&#39;s blog">
+    <link rel="icon" href="/zhangyongxin/favicon.ico">
     
-    <link rel="preload" href="/zhangyongxin/assets/css/29.styles.9e3e04b3.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.ddf1bad9.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/20.40f4cc39.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/28.a735de73.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/js/11.50193db4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/0.75a73257.js"><link rel="prefetch" href="/zhangyongxin/assets/js/1.3fcfc555.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.4d04e235.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.35b701f2.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.1bf33af5.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.b1ce5ddd.js"><link rel="prefetch" href="/zhangyongxin/assets/js/6.91d4cb8d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.e76f399a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.a977776a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.df6fc901.js"><link rel="prefetch" href="/zhangyongxin/assets/js/10.70cc808d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.457d4a5a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.cb49f9e8.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.3f278beb.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.f4d67201.js"><link rel="prefetch" href="/zhangyongxin/assets/js/16.5c6cfd59.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.a79c527e.js"><link rel="prefetch" href="/zhangyongxin/assets/js/18.850bed26.js"><link rel="prefetch" href="/zhangyongxin/assets/js/19.b1ee600c.js"><link rel="prefetch" href="/zhangyongxin/assets/js/21.4d8429b8.js"><link rel="prefetch" href="/zhangyongxin/assets/js/22.ee859293.js"><link rel="prefetch" href="/zhangyongxin/assets/js/23.7d9e1801.js"><link rel="prefetch" href="/zhangyongxin/assets/js/24.f3fd9f1f.js"><link rel="prefetch" href="/zhangyongxin/assets/js/25.c7ccbab7.js"><link rel="prefetch" href="/zhangyongxin/assets/js/26.b2c1fcbb.js"><link rel="prefetch" href="/zhangyongxin/assets/js/27.0aee5b74.js">
-    <link rel="stylesheet" href="/zhangyongxin/assets/css/29.styles.9e3e04b3.css">
+    <link rel="preload" href="/zhangyongxin/assets/css/styles.419abb40.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/app.419abb40.js" as="script"><link rel="preload" href="/zhangyongxin/assets/css/styles.419abb40.css" as="style"><link rel="preload" href="/zhangyongxin/assets/js/16.e36ddc95.js" as="script"><link rel="preload" href="/zhangyongxin/assets/js/10.6869048d.js" as="script"><link rel="prefetch" href="/zhangyongxin/assets/css/1.styles.ce6d56d0.css"><link rel="prefetch" href="/zhangyongxin/assets/css/9.styles.bc6dcdc9.css"><link rel="prefetch" href="/zhangyongxin/assets/js/1.ce6d56d0.js"><link rel="prefetch" href="/zhangyongxin/assets/js/11.4924cfca.js"><link rel="prefetch" href="/zhangyongxin/assets/js/12.06e0138d.js"><link rel="prefetch" href="/zhangyongxin/assets/js/13.69cd48a7.js"><link rel="prefetch" href="/zhangyongxin/assets/js/14.0ce302da.js"><link rel="prefetch" href="/zhangyongxin/assets/js/15.3f4a03ac.js"><link rel="prefetch" href="/zhangyongxin/assets/js/17.496bedcc.js"><link rel="prefetch" href="/zhangyongxin/assets/js/18.035aab39.js"><link rel="prefetch" href="/zhangyongxin/assets/js/19.8486cd1a.js"><link rel="prefetch" href="/zhangyongxin/assets/js/2.41263482.js"><link rel="prefetch" href="/zhangyongxin/assets/js/20.325020e4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/21.bdc80faf.js"><link rel="prefetch" href="/zhangyongxin/assets/js/22.502c28b1.js"><link rel="prefetch" href="/zhangyongxin/assets/js/23.bbc47177.js"><link rel="prefetch" href="/zhangyongxin/assets/js/24.98a9ae87.js"><link rel="prefetch" href="/zhangyongxin/assets/js/25.7f615574.js"><link rel="prefetch" href="/zhangyongxin/assets/js/26.4353febb.js"><link rel="prefetch" href="/zhangyongxin/assets/js/27.2485ec23.js"><link rel="prefetch" href="/zhangyongxin/assets/js/28.1a147586.js"><link rel="prefetch" href="/zhangyongxin/assets/js/29.aa1a0ac4.js"><link rel="prefetch" href="/zhangyongxin/assets/js/3.3bf55bee.js"><link rel="prefetch" href="/zhangyongxin/assets/js/30.e0315831.js"><link rel="prefetch" href="/zhangyongxin/assets/js/31.4f3cf23c.js"><link rel="prefetch" href="/zhangyongxin/assets/js/4.9eda696c.js"><link rel="prefetch" href="/zhangyongxin/assets/js/5.3085f65b.js"><link rel="prefetch" href="/zhangyongxin/assets/js/6.59588a53.js"><link rel="prefetch" href="/zhangyongxin/assets/js/7.4f6d4dca.js"><link rel="prefetch" href="/zhangyongxin/assets/js/8.5f48d196.js"><link rel="prefetch" href="/zhangyongxin/assets/js/9.bc6dcdc9.js">
+    <link rel="stylesheet" href="/zhangyongxin/assets/css/1.styles.ce6d56d0.css"><link rel="stylesheet" href="/zhangyongxin/assets/css/9.styles.bc6dcdc9.css"><link rel="stylesheet" href="/zhangyongxin/assets/css/styles.419abb40.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/zhangyongxin/" class="home-link router-link-active"><!----><span class="site-name">
-      章永新的博客
-    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav></div></header><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zhangyongxin/" class="nav-link">Home</a></div><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">关于</a></div><!----></nav><ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>博客</span><span class="arrow up"></span></p><ul class="sidebar-group-items"><li><a href="/zhangyongxin/blog/howToBuildMyOwnSite/howToBuildMyOwnSite.html" class="sidebar-link">如何建设自己的个人网站</a></li><li><a href="/zhangyongxin/blog/knowledgeStack.html" class="sidebar-link">如何建立自己的知识体系</a></li><li><a href="/zhangyongxin/blog/bookList.html" class="sidebar-link">书单</a></li><li><a href="/zhangyongxin/blog/designPattern/javaDesignPattern.html" class="sidebar-link">java设计模式</a></li><li><a href="/zhangyongxin/blog/docker.html" class="active sidebar-link">docker 入门</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/docker.html#docker-practice" class="sidebar-link">docker practice</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/docker.html#docker-常用命令" class="sidebar-link">docker 常用命令</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/docker.html#制作启动命令" class="sidebar-link">制作启动命令</a></li><li class="sidebar-sub-header"><a href="/zhangyongxin/blog/docker.html#制作容器" class="sidebar-link">制作容器</a></li></ul></li><li><a href="/zhangyongxin/blog/jmx.html" class="sidebar-link">SpringBoot 暴露 MBean</a></li><li><a href="/zhangyongxin/blog/maven.html" class="sidebar-link">maven命令</a></li><li><a href="/zhangyongxin/blog/crossTGW.html" class="sidebar-link">科学上网</a></li><li><a href="/zhangyongxin/blog/shortMsgCannotReveive/prodShortMsgCannotReceive.html" class="sidebar-link">记一次生产系统被攻击的事件</a></li><li><a href="/zhangyongxin/blog/whatHappenedWhenNewString/whatHappenedWhenNewString.html" class="sidebar-link">从 String str = new String(&quot;abc&quot;);说开去</a></li><li><a href="/zhangyongxin/blog/validateParameterforYourService.html" class="sidebar-link">在项目中通过切面统一进行参数校验</a></li><li><a href="/zhangyongxin/blog/dubboMutiIp.html" class="sidebar-link">记一次dubbo多Ip访问的问题</a></li><li><a href="/zhangyongxin/blog/mysqlSelectForupdate.html" class="sidebar-link">Mysql select ... for update</a></li><li><a href="/zhangyongxin/blog/deadLockSolve.html" class="sidebar-link">记一次生产死锁的问题调查和解决</a></li><li><a href="/zhangyongxin/blog/javaPassByValue.html" class="sidebar-link">Java 是值传递还是引用传递？</a></li><li><a href="/zhangyongxin/blog/httpStatus.html" class="sidebar-link">常见的HTTP状态码</a></li><li><a href="/zhangyongxin/blog/springNotes1.html" class="sidebar-link">spring4.3读书笔记1</a></li><li><a href="/zhangyongxin/blog/springNotes2.html" class="sidebar-link">Spring4.3读书笔记2</a></li><li><a href="/zhangyongxin/blog/springNotes3.html" class="sidebar-link">Spring4.3读书笔记3</a></li><li><a href="/zhangyongxin/blog/interestingThoughts/interestingThoughts.html" class="sidebar-link">有趣的想法</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>转载</span><span class="arrow down"></span></p><!----></div></li></ul></div><div class="page"><div class="content"><h1 id="docker-入门"><a href="#docker-入门" aria-hidden="true" class="header-anchor">#</a> docker 入门</h1><div><p>章永新 2018-06-07 15:03:29</p><hr></div><h2 id="docker-practice"><a href="#docker-practice" aria-hidden="true" class="header-anchor">#</a> docker practice</h2><p>为了保持内容为最新，建议每次阅读前先 pull 最新镜像</p><pre class="language-text"><code>$ docker pull dockerpracticecn/docker_practice
+    <div id="app" data-server-rendered="true"><div><div class="wrap"><div class="theme-container container no-sidebar"><header class="navbar"><div class="nav-header"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zhangyongxin/" class="home-link router-link-active"><img src="/zhangyongxin/img/logo.jpg" class="logo"> <span class="site-name can-hide">
+        博客
+      </span></a> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">About</a></div><div class="nav-item"><a href="https://github.com/xiaoxinshiwo" target="_blank" rel="noopener noreferrer" class="nav-link">Github</a></div> <!----></nav> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zhangyongxin/about/about.html" class="nav-link">About</a></div><div class="nav-item"><a href="https://github.com/xiaoxinshiwo" target="_blank" rel="noopener noreferrer" class="nav-link">Github</a></div> <!----></nav> <!----></div> <div class="page-container"><div><div class="page card"><div class="content-header"><!----> <span class="page-timestamp"></span></div> <div class="content"><h1 id="docker-入门"><a href="#docker-入门" aria-hidden="true" class="header-anchor">#</a> docker 入门</h1> <div><p>章永新 2018-06-07 15:03:29</p> <hr></div> <h2 id="docker-practice"><a href="#docker-practice" aria-hidden="true" class="header-anchor">#</a> docker practice</h2> <p>为了保持内容为最新，建议每次阅读前先 pull 最新镜像</p> <div class="language- extra-class"><pre class="language-text"><code>$ docker pull dockerpracticecn/docker_practice
 
 $ docker run -it --rm -d --name dockerPractice -p  4000:80  dockerpracticecn/docker_practice
-</code></pre><p>之后打开浏览器，在地址栏输入 <code>127.0.0.1:4000</code> 即可开始阅读。</p><h2 id="docker-常用命令"><a href="#docker-常用命令" aria-hidden="true" class="header-anchor">#</a> docker 常用命令</h2><pre class="language-text"><code># 获取mysql5.7版本的镜像
+</code></pre></div><p>之后打开浏览器，在地址栏输入 <code>127.0.0.1:4000</code> 即可开始阅读。</p> <h2 id="docker-常用命令"><a href="#docker-常用命令" aria-hidden="true" class="header-anchor">#</a> docker 常用命令</h2> <div class="language- extra-class"><pre class="language-text"><code># 获取mysql5.7版本的镜像
 docker pull mysql:5.7.22
 # 启动一个 容器内3306映射本机3309的名为mysql 5.7.22的容器,不加版本则是运行latest
 docker run -it --rm -d -p 3306:3306 --name mysql -v ~/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456  mysql:5.7.22
@@ -42,8 +42,8 @@ docker rm containerId
 docker start mysql  
 # 进入名为mysql的容器
 docker exec -it mysql bash 
-</code></pre><h2 id="制作启动命令"><a href="#制作启动命令" aria-hidden="true" class="header-anchor">#</a> 制作启动命令</h2><p>在实际开发中，开发者往往需要在本地启动<code>mysql/redis/zookeeper/elasticsearch/activemq</code>等
-下面的命令启动了mysql/redis/zookeeper三个应用，这样就可以一键启动了。</p><pre class="language-text"><code> #runDevToolKit.sh
+</code></pre></div><h2 id="制作启动命令"><a href="#制作启动命令" aria-hidden="true" class="header-anchor">#</a> 制作启动命令</h2> <p>在实际开发中，开发者往往需要在本地启动<code>mysql/redis/zookeeper/elasticsearch/activemq</code>等
+下面的命令启动了mysql/redis/zookeeper三个应用，这样就可以一键启动了。</p> <div class="language- extra-class"><pre class="language-text"><code> #runDevToolKit.sh
  # 启动mysql
  echo 'run mysql...'
  docker run -it --rm -d -p 3306:3306 --name mysql -v ~/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456  mysql:5.7.22
@@ -57,16 +57,16 @@ docker exec -it mysql bash
  echo 'The running containers are...'
  docker ps -a
  
-</code></pre><pre class="language-text"><code># stopDevToolKit.sh
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># stopDevToolKit.sh
 # 停止所有容器
 echo 'stop all containers...'
 docker stop mysql
 docker stop redis
 docker stop zookeeper
-</code></pre><h2 id="制作容器"><a href="#制作容器" aria-hidden="true" class="header-anchor">#</a> 制作容器</h2><ol start="0"><li>准备文件</li></ol><pre class="language-text"><code>创建空文件件(否则会出现build-context-for-docker-image-very-large问题) docker-build  see:https://stackoverflow.com/questions/26600769/build-context-for-docker-image-very-large
+</code></pre></div><h2 id="制作容器"><a href="#制作容器" aria-hidden="true" class="header-anchor">#</a> 制作容器</h2> <ol start="0"><li>准备文件</li></ol> <div class="language- extra-class"><pre class="language-text"><code>创建空文件件(否则会出现build-context-for-docker-image-very-large问题) docker-build  see:https://stackoverflow.com/questions/26600769/build-context-for-docker-image-very-large
 往docker-build中添加文件：jre-8u171-linux-x64.tar.gz apache-tomcat-8.5.3.zip
 
-</code></pre><ol><li>编写Dockerfile</li></ol><pre class="language-text"><code>FROM ubuntu
+</code></pre></div><ol><li>编写Dockerfile</li></ol> <div class="language- extra-class"><pre class="language-text"><code>FROM ubuntu
 
 MAINTAINER created from zhangyognxin@f6car.com
 #把java与tomcat添加到容器中 tar.gz 会自动解压
@@ -84,7 +84,7 @@ ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
 EXPOSE  8080
 
 CMD [&quot;catalina.sh&quot;, &quot;run&quot;]
-</code></pre><ol start="2"><li>切换至docker-build文件夹下执行命令</li></ol><pre class="language-text"><code>$ docker build -t tomcat8:jre8 .
+</code></pre></div><ol start="2"><li>切换至docker-build文件夹下执行命令</li></ol> <div class="language- extra-class"><pre class="language-text"><code>$ docker build -t tomcat8:jre8 .
 Sending build context to Docker daemon   94.6MB
 Step 1/11 : FROM ubuntu:14.10
  ---&gt; a8a2ba3ce1a3
@@ -126,15 +126,15 @@ Removing intermediate container b315b22125ae
  ---&gt; 8e145b187fd5
 Successfully built 8e145b187fd5
 Successfully tagged tomcat8:jre8
-</code></pre><ol start="3"><li>启动</li></ol><pre class="language-text"><code>docker run -it -d --rm -p 8888:8080 --name tomcat8 -v ~/docker/tomcat8:/usr/local/apache-tomcat-8.5.3/webapps/docker tomcat8:jre8
+</code></pre></div><ol start="3"><li>启动</li></ol> <div class="language- extra-class"><pre class="language-text"><code>docker run -it -d --rm -p 8888:8080 --name tomcat8 -v ~/docker/tomcat8:/usr/local/apache-tomcat-8.5.3/webapps/docker tomcat8:jre8
 
-</code></pre></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
-        ← <a href="/zhangyongxin/blog/designPattern/javaDesignPattern.html" class="prev">
-          java设计模式
-        </a></span><span class="next"><a href="/zhangyongxin/blog/jmx.html">
-          SpringBoot 暴露 MBean
-        </a> →
-      </span></p></div></div></div></div>
-    <script src="/zhangyongxin/assets/js/20.40f4cc39.js" defer></script><script src="/zhangyongxin/assets/js/28.a735de73.js" defer></script><script src="/zhangyongxin/assets/js/app.ddf1bad9.js" defer></script>
+</code></pre></div></div> <!----> <div class="content page-nav"><p class="inner"><span class="prev">
+          ← <a href="/zhangyongxin/blog/designPattern/javaDesignPattern.html" class="prev">
+            java设计模式
+          </a></span> <span class="next"><a href="/zhangyongxin/blog/dubboMutiIp.html">
+            记一次dubbo多Ip访问的问题
+          </a> →
+        </span></p></div></div> <!----></div> <!----></div> <div class="tool-group"><!----></div></div> <!----></div> <div class="background-mask" style="background:url(&quot;https://s1.ax1x.com/2018/11/07/i7AOmV.jpg&quot;) no-repeat fixed;"></div></div></div>
+    <script src="/zhangyongxin/assets/js/16.e36ddc95.js" defer></script><script src="/zhangyongxin/assets/js/10.6869048d.js" defer></script><script src="/zhangyongxin/assets/js/app.419abb40.js" defer></script>
   </body>
 </html>
