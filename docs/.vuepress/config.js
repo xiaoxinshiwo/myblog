@@ -15,7 +15,7 @@ module.exports = {
     background: `https://s1.ax1x.com/2018/11/07/i7AOmV.jpg`,
     github: 'xiaoxinshiwo',
     logo: '/img/logo.jpg',
-    accentColor: '#5d107a',
+    accentColor: '#0a2d34',
     per_page: 6,
     date_format: 'yyyy-MM-dd HH:mm:ss',
     nav: [
