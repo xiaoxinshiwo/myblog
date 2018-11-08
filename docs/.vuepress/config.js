@@ -6,7 +6,6 @@ module.exports = {
     ['link', { rel: 'icon', href: `/favicon.ico` }]
   ],
   base: '/zhangyongxin/',
-  repo: 'https://github.com/xiaoxinshiwo/myblog',
   dest: './docs/.vuepress/dist',
   ga: '',
   serviceWorker: true,
