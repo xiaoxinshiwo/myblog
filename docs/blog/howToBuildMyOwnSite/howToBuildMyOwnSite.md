@@ -6,6 +6,7 @@
 希望看完本文您能够搭建自己的个人网站
 使用技术
 VuePress 官方网站：[https://vuepress.vuejs.org/zh/guide/](https://vuepress.vuejs.org/zh/guide/)
+Yubisaki 主题的使用:[https://wuwaki.me/yubisaki/usage.html](https://wuwaki.me/yubisaki/usage.html)
 环境
 ```
 Macbook pro 、IntelliJ Idea
