@@ -18,6 +18,6 @@ cd docs/.vuepress/dist
 
 
 # 发布到 https://xiaoxinshiwo.github.io/zhangyongxin
- git push -f git@github.com:xiaoxinshiwo/zhangyongxin.git master:gh-pages
+ git push -f https://github.com/xiaoxinshiwo/zhangyongxin.git master
 
 cd -

@@ -10,7 +10,8 @@
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "autoprefixer": "^9.3.1",

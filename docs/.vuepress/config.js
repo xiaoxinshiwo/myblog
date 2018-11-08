@@ -17,6 +17,7 @@ module.exports = {
     logo: '/img/logo.jpg',
     accentColor: '#0a2d34',
     per_page: 6,
+    lastUpdated: 'Last Updated', // string | boolean
     date_format: 'yyyy-MM-dd HH:mm:ss',
     nav: [
       {text: 'About', link: '/about/about'},
