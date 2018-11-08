@@ -49,6 +49,7 @@ export default ({
     // 生成静态页时在node中执行，没有document对象
     document && integrateGitment(router)
   } catch (e) {
+    debugger;
     console.error(e.message)
   }
 }
