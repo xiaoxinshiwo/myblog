@@ -4,7 +4,7 @@
 ### 2018年
 ### 技术类
 1. 大话设计模式:white_check_mark:
-<!--- more--->
+<!-- more -->
 2. 深入理解JAVA虚拟机:white_check_mark:
 3. 亿级流量网站核心技术:hourglass_flowing_sand:
 4. Spring源码深度解析:hourglass_flowing_sand:
