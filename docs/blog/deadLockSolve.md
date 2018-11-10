@@ -1,5 +1,10 @@
-# 记一次生产死锁的问题调查和解决
-<authorAndTime dateTime='2018-11-07 17:12:47'/>
+---
+title: 记一次生产死锁的问题调查和解决
+date: 2018-11-07 17:12:47
+tag:
+  - mysql
+  - 死锁
+---
 
 邮件收到报错信息如下：
 ```
@@ -9,6 +14,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException: Deadlock foun
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	<!-- more -->
 	at com.air.tqb.dubbo.filter.ClientExceptionFilter.invoke(ClientExceptionFilter.java:36)
 	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
 	at com.air.tqb.dubbo.filter.ClientInfoConsumerFilter.invoke(ClientInfoConsumerFilter.java:52)

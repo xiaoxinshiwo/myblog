@@ -1,6 +1,11 @@
-# Spring4.3读书笔记3
-<authorAndTime dateTime='2018-05-16 11:21:36'/>
-
+---
+title: spring4.3读书笔记3
+date: 2018-05-16 11:21:36
+type: post
+tag:
+  - 读书笔记
+  - spring
+---
 41. Configuring a ConversionService
 A ConversionService is a stateless object designed to be instantiated at application startup, then shared between multiple threads. In a Spring application, you typically configure a ConversionService instance per Spring container (or ApplicationContext). That ConversionService will be picked up by Spring and then used whenever a type conversion needs to be performed by the framework. You may also inject this ConversionService into any of your beans and invoke it directly.
 If no ConversionService is registered with Spring, the original PropertyEditor-based system is used.
@@ -9,6 +14,7 @@ To register a default ConversionService with Spring, add the following bean defi
 <bean id="conversionService"
     class="org.springframework.context.support.ConversionServiceFactoryBean"/>
 ```
+<!-- more -->
 A default ConversionService can convert between strings, numbers, enums, collections, maps, and other common types. To supplement or override the default converters with your own custom converter(s), set the converters property. Property values may implement either of the Converter, ConverterFactory, or GenericConverter interfaces.
 ```
 <bean id="conversionService"

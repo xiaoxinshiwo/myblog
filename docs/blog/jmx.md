@@ -1,6 +1,10 @@
-# SpringBoot 暴露 MBean
-<authorAndTime dateTime='2018-06-07 15:03:43'/>
-
+---
+title: SpringBoot 暴露 MBean
+date: 2018-06-07 15:03:43
+type: post
+tag:
+  - SpringBoot
+---
 ## 增加配置项
 
 ```
@@ -8,6 +12,7 @@ spring.jmx.default-domain=${spring.application.name}
 spring.jmx.enabled=true
 spring.jmx.server=mbeanServer
 ```
+<!-- more -->
 ## 配置需要暴露的mbean
 
 ```
@@ -49,7 +54,7 @@ Purpose | Annotation | Annotation Type
 |Define descriptions for operation parameters|@ManagedOperationParameter and<br/>@ManagedOperationParameters|Method|
 
 
-## 参考: 
+## 参考:
 [https://docs.spring.io/spring/docs/4.3.17.RELEASE/spring-framework-reference/htmlsingle/#jmx-exporting](https://docs.spring.io/spring/docs/4.3.17.RELEASE/spring-framework-reference/htmlsingle/#jmx-exporting)
 
 ## 远程连接端口设置

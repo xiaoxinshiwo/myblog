@@ -1,5 +1,11 @@
-# Java 是值传递还是引用传递？
-<authorAndTime dateTime='2018-11-05 14:00:56'/>
+---
+title: Java 是值传递还是引用传递？
+date: 2018-11-05 14:00:56
+type: post
+tag:
+  - 转载
+  - java
+---
 
 Java is always ```pass-by-value```. Unfortunately, they decided to call the location of an object a "reference". When we pass the value of an object, we are passing the reference to it. This is confusing to beginners.
 
@@ -13,7 +19,7 @@ public static void main(String[] args) {
     aDog.getName().equals("Max"); // true
     aDog.getName().equals("Fifi"); // false
 }
-
+<!-- more -->
 public static void foo(Dog d) {
     d.getName().equals("Max"); // true
     // change d inside of foo() to point to a new Dog instance "Fifi"

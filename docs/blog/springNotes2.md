@@ -1,6 +1,11 @@
-# Spring4.3读书笔记2
-<authorAndTime dateTime='2018-05-16 11:21:01'/>
-
+---
+title: spring4.3读书笔记2
+date: 2018-05-16 11:21:01
+type: post
+tag:
+  - 读书笔记
+  - spring
+---
 21. Fine-tuning annotation-based autowiring with qualifiers
 > @Primary is an effective way to use autowiring by type with several instances when one primary candidate can be determined. When more control over the selection process is required, Spring’s @Qualifier annotation can be used. You can associate qualifier values with specific arguments, narrowing the set of type matches so that a specific bean is chosen for each argument. In the simplest case, this can be a plain descriptive value:
 ```
@@ -13,6 +18,7 @@ public class MovieRecommender {
    // ...
 }
 ```
+<!-- more -->
 The @Qualifier annotation can also be specified on individual constructor arguments or method parameters:
 ```
 public class MovieRecommender {

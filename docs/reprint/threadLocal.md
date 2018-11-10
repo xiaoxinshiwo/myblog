@@ -1,6 +1,10 @@
-# java.lang.ThreadLocal 分析
-<authorAndTime dateTime='2018-04-27 15:45:06'/>
-
+---
+title: java.lang.ThreadLocal 分析
+date: 2018-04-27 15:45:06
+tag:
+  - 转载
+  - ThreadLocal
+---
 简述
 ThreadLocal是什么呢？其实ThreadLocal并非是一个线程的本地实现版本，它并不是一个Thread，而是threadlocalvariable(线程局部变量)。也许把它命名为ThreadLocalVar更加合适。线程局部变量(ThreadLocal)其实的功用非常简单，就是为每一个使用该变量的线程都提供一个变量值的副本，是Java中一种较为特殊的线程绑定机制，是每一个线程都可以独立地改变自己的副本，而不会和其它线程的副本冲突。
 

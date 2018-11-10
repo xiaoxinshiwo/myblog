@@ -14,7 +14,7 @@ module.exports = {
     background: `https://s1.ax1x.com/2018/11/08/i7Y6L8.jpg`,
     github: 'xiaoxinshiwo',
     logo: '/img/logo.jpg',
-    accentColor: '#0a2d34',
+    accentColor: '#ac0b39',
     per_page: 6,
     lastUpdated: 'Last Updated', // string | boolean
     date_format: 'yyyy-MM-dd HH:mm:ss',

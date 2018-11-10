@@ -1,5 +1,10 @@
-# docker 入门
-<authorAndTime dateTime='2018-06-07 15:03:29'/>
+---
+title: docker 入门
+date: 2018-06-07 15:03:29
+type: post
+tag:
+  - docker
+---
 
 ## docker practice
 
@@ -10,7 +15,7 @@ $ docker pull dockerpracticecn/docker_practice
 $ docker run -it --rm -d --name dockerPractice -p  4000:80  dockerpracticecn/docker_practice
 ```
 之后打开浏览器，在地址栏输入 ```127.0.0.1:4000``` 即可开始阅读。
-
+<!-- more -->
 ## docker 常用命令
 
 ```
@@ -35,11 +40,11 @@ docker container ls
 # 删除镜像
 docker image rm mysql
 # 删除容器
-docker rm containerId 
+docker rm containerId
 # 启动名为mysql的容器
-docker start mysql  
+docker start mysql
 # 进入名为mysql的容器
-docker exec -it mysql bash 
+docker exec -it mysql bash
 ```
 ## 制作启动命令
 
@@ -59,7 +64,7 @@ docker exec -it mysql bash
  # 查看所有运行的容器
  echo 'The running containers are...'
  docker ps -a
- 
+
 ```
 ```
 # stopDevToolKit.sh
@@ -142,7 +147,7 @@ Removing intermediate container b315b22125ae
 Successfully built 8e145b187fd5
 Successfully tagged tomcat8:jre8
 ```
-3. 启动 
+3. 启动
 ```
 docker run -it -d --rm -p 8888:8080 --name tomcat8 -v ~/docker/tomcat8:/usr/local/apache-tomcat-8.5.3/webapps/docker tomcat8:jre8
 

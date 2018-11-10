@@ -1,11 +1,17 @@
-# 记一次dubbo多Ip访问的问题
-<authorAndTime dateTime='2018-05-28 13:04:48'/>
+---
+title: 记一次dubbo多Ip访问的问题
+date: 2018-05-28 13:04:48
+type: post
+tag:
+  - dubbo
+---
 
 ### 问题现象
 我负责的一个项目的测试环境是部署在阿里云的一个外网环境的，dubbo发布的crm可以在部署在该机器上的其他系统访问，
 但是本地开发环境下也需要去消费的，因为项目组成员有外注人员远程办公，不可能在本地启动一个crm自己调用。
 但是本地开发环境无法消费部署在阿里云环境的crm，即使通过```dubbo.protocol.host```绑定了外网地址，启动的时候
 控制台打印如下异常：
+<!-- more -->
 ```
 2018-05-28 09:21:52,047 ERROR [main] [] c.c.c.d.p.ProviderCRM - Fail to start server(url: dubbo://test.haoyiquan.com:33128/com.carzone.crm.api.facade.CompanyCustomerFacade?application=yixiuge-crm-provider&channel.readonly.sent=true&codec=dubbo&default.timeout=20000&dubbo=crm&group=yixiuge-platform-crm&heartbeat=60000&interface=com.carzone.crm.api.facade.CompanyCustomerFacade&methods=update,register,queryById&owner=crm&pid=23287&revision=crm&side=provider&threads=200&timestamp=1527470511816) Failed to bind NettyServer on test.haoyiquan.com/101.132.**.**:33128, cause: Failed to bind to: test.haoyiquan.com/101.132.**.**:33128
 com.alibaba.dubbo.rpc.RpcException: Fail to start server(url: dubbo://test.haoyiquan.com:33128/com.carzone.crm.api.facade.CompanyCustomerFacade?application=yixiuge-crm-provider&channel.readonly.sent=true&codec=dubbo&default.timeout=20000&dubbo=crm&group=yixiuge-platform-crm&heartbeat=60000&interface=com.carzone.crm.api.facade.CompanyCustomerFacade&methods=update,register,queryById&owner=crm&pid=23287&revision=crm&side=provider&threads=200&timestamp=1527470511816) Failed to bind NettyServer on test.haoyiquan.com/101.132.**.**:33128, cause: Failed to bind to: test.haoyiquan.com/101.132.**.**:33128

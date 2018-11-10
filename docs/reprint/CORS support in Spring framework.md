@@ -1,6 +1,10 @@
-# CORS support in Spring Framework
-<authorAndTime dateTime='2018-05-21 15:08:11'/>
-
+---
+title: CORS support in Spring Framework
+date: 2018-05-21 15:08:11
+tag:
+  - 转载
+  - cors
+---
 
  ENGINEERING   SÉBASTIEN DELEUZE   JUNE 08, 2015
 For security reasons, browsers prohibit AJAX calls to resources residing outside the current origin. For example, as you’re checking your bank account in one tab, you could have the evil.com website in another tab. The scripts from evil.com shouldn’t be able to make AJAX requests to your bank API (withdrawing money from your account!) using your credentials.

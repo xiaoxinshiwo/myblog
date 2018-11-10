@@ -1,12 +1,16 @@
-# 如何建设自己的个人网站
-<authorAndTime dateTime='2018-04-24 19:30:06'/>
-
+---
+title: 如何建设自己的个人网站
+date: 2018-04-24 19:30:06
+tag:
+  - 个人网站
+---
 前言
 如果您希望创建一个类似本站的静态个人网站，请留下您的脚步，<br/>
 希望看完本文您能够搭建自己的个人网站
 使用技术
 VuePress 官方网站：[https://vuepress.vuejs.org/zh/guide/](https://vuepress.vuejs.org/zh/guide/)
 Yubisaki 主题的使用:[https://wuwaki.me/yubisaki/usage.html](https://wuwaki.me/yubisaki/usage.html)
+<!-- more -->
 环境
 ```
 Macbook pro 、IntelliJ Idea

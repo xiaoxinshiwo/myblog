@@ -1,5 +1,10 @@
-# spring4.3读书笔记1
-<authorAndTime dateTime='2018-05-15 14:08:19'/>
+---
+title: spring4.3读书笔记1
+date: 2018-05-15 14:08:19
+tag:
+  - 读书笔记
+  - spring
+---
 
 1. logging
 >  A more common choice amongst SLF4J users, which uses fewer steps and generates fewer dependencies, is to bind directly to Logback. This removes the extra binding step because Logback implements SLF4J directly, so you only need to depend on just two libraries, namely jcl-over-slf4j and logback):
@@ -17,6 +22,7 @@
     </dependency>
 </dependencies>
 ```
+<!-- more -->
 2. spring历届版本新特性
 >  The Spring Framework was first released in 2004; since then there have been significant major revisions: Spring 2.0 provided XML namespaces and AspectJ support; Spring 2.5 embraced annotation-driven configuration; Spring 3.0 introduced a strong Java 5+ foundation across the framework codebase, and features such as the Java-based @Configuration model.
 Version 4.0 is the latest major release of the Spring Framework and the first to fully support Java 8 features. You can still use Spring with older versions of Java, however, the minimum requirement has now been raised to Java SE 6. We have also taken the opportunity of a major release to remove many deprecated classes and methods.

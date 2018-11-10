@@ -1,11 +1,16 @@
-# Mysql select ... for update
-<authorAndTime dateTime='2018-11-06 09:42:01'/>
+---
+title: Mysql select ... for update
+date: 2018-11-06 09:42:01
+type: post
+tag:
+  - mysql
+---
 
 > 对于搜索遇到的索引记录，锁定行和任何关联的索引条目，就像您UPDATE为这些行发出 语句一样。阻止其他事务更新这些行，执行SELECT ... LOCK IN SHARE MODE或从某些事务隔离级别读取数据。一致性读取将忽略在读取视图中存在的记录上设置的任何锁定。<br/>
 对于锁定读取 （SELECT使用FOR UPDATE或LOCK IN SHARE MODE）， UPDATE和 DELETE语句，所采用的锁取决于语句是使用具有唯一搜索条件的唯一索引还是范围类型搜索条件。<br/>
 对于具有唯一搜索条件的唯一索引， InnoDB仅锁定找到的索引记录，而不是之前的间隙。<br/>
 对于其他搜索条件以及非唯一索引， InnoDB锁定扫描的索引范围，使用间隙锁或 下一键锁定 来阻止其他会话插入范围所涵盖的间隙。有关间隙锁和下一键锁的信息，请参见第14.6.1节“InnoDB锁定”。
-
+<!-- more -->
 根据mysql官方文档我们可以知道SELECT ... FOR UPDATE可以给查询到的关联记录加上读锁的，能够阻止其他的事务更新这些行。
 在实际的项目中，订单的流水号的规则如下CGD + 20181011 + 00001 程序调用的function如下：
 ```
