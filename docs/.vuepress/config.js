@@ -14,6 +14,7 @@ module.exports = {
     background: `https://s1.ax1x.com/2018/11/08/i7Y6L8.jpg`,
     github: 'xiaoxinshiwo',
     logo: '/img/logo.jpg',
+    footer:'十步杀一人，千里不留行',
     accentColor: '#ac0b39',
     per_page: 6,
     lastUpdated: 'Last Updated', // string | boolean
@@ -51,4 +52,5 @@ module.exports = {
   postcss: {
     plugins: [require('autoprefixer')]
   },
+  plugins: ['@vuepress/last-updated']
 }
