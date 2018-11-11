@@ -7,7 +7,7 @@ module.exports = {
   ],
   base: '/zhangyongxin/',
   dest: './docs/.vuepress/dist',
-  ga: '',
+  ga: 'UA-129050457-1',
   serviceWorker: true,
   evergreen: true,
   themeConfig: {
