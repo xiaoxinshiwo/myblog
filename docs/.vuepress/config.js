@@ -24,11 +24,11 @@ module.exports = {
     comment: {
       clientID: 'dcb2c98bdb97b6f5e37f',
       clientSecret: 'a58fc9ff4e53f1e26539fb621d65402d501027c4',
-      repo: 'zhangyongxin',
+      repo: 'myblog',
       owner: 'xiaoxinshiwo',
       admin: ['xiaoxinshiwo'],
       perPage: 5,
-      id: 'comment',      // Ensure uniqueness and length less than 50
+      id: this.$site,      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     },
     nav: [
@@ -52,5 +52,5 @@ module.exports = {
   postcss: {
     plugins: [require('autoprefixer')]
   },
-  plugins: ['@vuepress/last-updated']
+  plugins: ['@vuepress/last-updated','@vuepress/google-analytics']
 }
