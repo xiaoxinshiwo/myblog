@@ -28,7 +28,7 @@ module.exports = {
       owner: 'xiaoxinshiwo',
       admin: ['xiaoxinshiwo'],
       perPage: 5,
-      id: this.$site,      // Ensure uniqueness and length less than 50
+      // id: this.$site,      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     },
     nav: [
