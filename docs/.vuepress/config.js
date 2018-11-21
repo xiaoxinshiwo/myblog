@@ -32,6 +32,7 @@ module.exports = {
       distractionFreeMode: false  // Facebook-like distraction free mode
     },
     nav: [
+      {text: '分类', link: '/tags/'},
       {text: 'About', link: '/about/about'},
       {text: 'Github', link: 'https://github.com/xiaoxinshiwo'}
     ]
