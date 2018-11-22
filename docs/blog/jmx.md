@@ -1,5 +1,5 @@
 ---
-title: SpringBoot 暴露 MBean
+title: springBoot 暴露 MBean
 date: 2018-06-07 15:03:43
 type: post
 tag:
