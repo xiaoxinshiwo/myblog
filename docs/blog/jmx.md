@@ -3,7 +3,8 @@ title: SpringBoot 暴露 MBean
 date: 2018-06-07 15:03:43
 type: post
 tag:
-  - SpringBoot
+  - springBoot
+  - mbean
 ---
 ## 增加配置项
 

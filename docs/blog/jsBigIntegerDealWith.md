@@ -3,13 +3,13 @@ title: 前端无法正确接收BigInteger型数值
 date: 2018-11-21 13:55:05
 type: post
 tag:
-  - JavaScript
+  - javascript
 ---
 
 诡异的现象，后端返回了BigInteger型数值，但是前端接收后，后面的几位都变成0了？？？很诡异：
 
-<!-- more -->
 ![avatar](https://ww1.sinaimg.cn/large/007iUjdily1fxfjjtkkclj317o0emn1l)
+<!-- more -->
 但是通过工具获取的值确实是正确的：
 ![avatar](https://ww1.sinaimg.cn/large/007iUjdily1fxfjjtjhagj30p10gpac0)
 google之，得知：
