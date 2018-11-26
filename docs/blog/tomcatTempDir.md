@@ -1,12 +1,12 @@
 ---
-title: tomcat temp 文件夹不存在导致图形验证码不能显示
-date: 2018-11-22 15:06:55
+title: 验证码显示不出来,tomcat的temp文件夹丢失导致
+date: 2018-11-22 13:55:05
 type: post
 tag:
   - tomcat
 ---
 一位同事使用了google kaptcha用于图像验证码的生成，
-在测试环境可以显示验证码，但是在试用环境不能显示验证码，且点多次点击后或出现Stack Overflow，很是诡异。
+在测试环境可以显示验证码，但是在试用环境不能显示验证码，且点多次点击后或出现Stack Overflow。
 <!-- more -->
 具体代码如下：
 ```
@@ -44,9 +44,6 @@ tag:
 ```
 google之：
 ```
-
-23
-down vote
 When you startup Tomcat, using startup.bat (Windows) or startup.sh, it calls catalina.bat/catalina.sh respectively.
 
 Catalina then needs a temp directory to be set. It does this by setting the CATALINA_TMPDIR variable to TOMCAT_HOME\temp folder and assigns it to java system environment variable as java.io.tmpdir.
@@ -75,4 +72,6 @@ Finally, the java.io.tmpdir is pointed to the CATALINA_TMPDIR where the JVM writ
 原来：jvm生成临时文件都会写到java.io.tmpdir文件夹下，且临时文件夹默认路径为```%CATALINA_BASE%\temp```，但是试用环境的tomcat下的temp文件夹莫名的不见了，
 创建temp文件夹后，验证码可以显示了。
 参考：
-https://stackoverflow.com/questions/7112591/what-is-the-tomcat-temp-directory-in-tomcat-7
+[https://stackoverflow.com/questions/7112591/what-is-the-tomcat-temp-directory-in-tomcat-7](https://stackoverflow.com/questions/7112591/what-is-the-tomcat-temp-directory-in-tomcat-7)
+至于为什么会出现Stack Overflow则是因为框架发生异常时会往response写入错误信息，但是在获取验证码时靠response输出了图片文件流，
+response处于提交状态，所以会继续异常，致使异常堆积，无法释放，造成Stack Overflow。
