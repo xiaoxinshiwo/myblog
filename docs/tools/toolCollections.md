@@ -12,3 +12,5 @@ tag:
 6. [Md5](https://www.cmd5.com/)
 7. [maven version 替换](/blog/maven.html)
 8. [linux 命令](/blog/linux.html)
+9. [阿里巴巴矢量图库](http://www.iconfont.cn/)
+10. [search maven](https://search.maven.org/)
