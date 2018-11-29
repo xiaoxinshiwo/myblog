@@ -16,7 +16,7 @@ int b=a;
  Integer a = 1;
  int b=a;
 ```
-我们把断点打在Integer.valueOf()方法上，发现```int b= a 就是执行 Integer(1).valueOf()```
+我们把断点打在Integer.intValue()方法上，发现```int b= a 就是执行 Integer(1).intValue()```
 ![](https://ww1.sinaimg.cn/large/007iUjdily1fxoxhtdh5qj30h103udfy)
 所以
 ```
@@ -24,7 +24,7 @@ Integer a = null;
 int b = a;
 
 等于
-int b = null.valueOf();
+int b = null.intValue();
 会抛出空指针异常
 
 ```
