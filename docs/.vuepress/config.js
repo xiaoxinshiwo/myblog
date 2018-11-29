@@ -33,6 +33,7 @@ module.exports = {
     },
     nav: [
       {text: '分类', link: '/tags/'},
+      {text: '工具', link: '/tools/toolCollections'},
       {text: 'About', link: '/about/about'},
       {text: 'Github', link: 'https://github.com/xiaoxinshiwo'}
     ]
