@@ -15,3 +15,5 @@ tag:
 9. [阿里巴巴矢量图库](http://www.iconfont.cn/)
 10. [search maven](https://search.maven.org/)
 11. [冷熊简历](http://cv.ftqq.com/#)
+12. [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn#ancients)
+13. [MySQL 资源大全中文版](https://github.com/jobbole/awesome-mysql-cn)
