@@ -9,11 +9,12 @@ module.exports = {
   dest: './docs/.vuepress/dist',
   ga: 'UA-129050457-1',
   serviceWorker: true,
+  port:8090,
   evergreen: true,
   themeConfig: {
     background: `https://s1.ax1x.com/2018/11/08/i7Y6L8.jpg`,
     github: 'xiaoxinshiwo',
-    logo: '/img/logo.jpg',
+    logo: 'https://s1.ax1x.com/2018/12/08/F3T3h6.png',
     footer:'十步杀一人，千里不留行',
     accentColor: '#ac0b39',
     per_page: 6,

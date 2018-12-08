@@ -19,3 +19,4 @@ tag:
 12. [Java资源大全中文版](https://github.com/jobbole/awesome-java-cn#ancients)
 13. [MySQL 资源大全中文版](https://github.com/jobbole/awesome-mysql-cn)
 14. [系统管理员资源大全中文版](https://github.com/jobbole/awesome-sysadmin-cn)
+15. [精美图标](https://www.easyicon.net/)
