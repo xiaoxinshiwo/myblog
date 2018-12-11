@@ -14,7 +14,7 @@ module.exports = {
   themeConfig: {
     background: `https://s1.ax1x.com/2018/11/08/i7Y6L8.jpg`,
     github: 'xiaoxinshiwo',
-    logo: 'https://ww1.sinaimg.cn/large/007iUjdily1fxzd5bx3z0j303k03kmx0.jpg',
+    logo: 'https://ae01.alicdn.com/kf/HTB1uzODadzvK1RkSnfo762MwVXai.png',
     footer:'十步杀一人，千里不留行',
     accentColor: '#ac0b39',
     per_page: 6,
