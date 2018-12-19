@@ -11,7 +11,7 @@ tag:
 5. [urlDecode](http://tool.chinaz.com/Tools/urlencode.aspx)
 6. [Md5](https://www.cmd5.com/)
 <!-- more -->
-7. [maven version 替换](/blog/maven.html)
+7. [maven 命令](/blog/maven.html)
 8. [linux 命令](/blog/linux.html)
 9. [阿里巴巴矢量图库](http://www.iconfont.cn/)
 10. [search maven](https://search.maven.org/)
