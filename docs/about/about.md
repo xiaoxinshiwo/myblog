@@ -1,6 +1,7 @@
 ---
 title: 关于
 ---
-新浪微博
-<img src="./weibo.jpeg" alt="微博" style="height: 50%; width: 60%;">
-
+<a data-fancybox title="微博" target="_blank"
+href="https://ww1.sinaimg.cn/large/007iUjdily1fyd6sothv1j30u00zwgn6.jpg">
+![avatar](https://ww1.sinaimg.cn/large/007iUjdily1fyd6sothv1j30u00zwgn6.jpg)
+</a>
