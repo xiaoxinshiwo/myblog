@@ -8,7 +8,7 @@ tag:
 
 诡异的现象，后端返回了BigInteger型数值，但是前端接收后，后面的几位都变成0了？？？很诡异：
 <a data-fancybox title="诡异的现象" target="_blank"
-href="https://ww1.sinaimg.cn/large/007iUjdily1fxfjjtjhagj30p10gpac0">
+href="https://ww1.sinaimg.cn/large/007iUjdily1fxfjjtkkclj317o0emn1l">
 ![avatar](https://ww1.sinaimg.cn/large/007iUjdily1fxfjjtkkclj317o0emn1l)
 </a>
 <!-- more -->
