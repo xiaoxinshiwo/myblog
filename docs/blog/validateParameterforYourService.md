@@ -13,7 +13,7 @@ tag:
 下面我们来看看怎么在service层加入切面，在切面上如何进行参数校验吧。<br/>
 <!-- more -->
 引入依赖:
-```
+```xml
 <dependency>
   <groupId>org.hibernate.validator</groupId>
   <artifactId>hibernate-validator</artifactId>
@@ -26,7 +26,7 @@ tag:
 </dependency
 ```
 编写model编写需要参数校验的bean:
-```
+```java
 package com.xiaoxin.validator.model;
 
 import com.xiaoxin.validator.annotation.Gender;
@@ -66,7 +66,7 @@ public class Student {
 }
 ```
 @Gender为自定义限制注解，代码如下：
-```
+```java
 package com.xiaoxin.validator.annotation;
 
 import com.xiaoxin.validator.GenderValidator;
@@ -95,7 +95,7 @@ public @interface Gender {
 
 ```
 编写@Gender注解validator实现校验任务
-```
+```java
 package com.xiaoxin.validator;
 
 import com.xiaoxin.validator.annotation.Gender;
@@ -124,7 +124,7 @@ public class GenderValidator implements ConstraintValidator<Gender, Integer> {
 
 ```
 编写自定义注解@NeedValidate用于统一切面处理
-```
+```java
 package com.xiaoxin.validator.annotation;
 
 import java.lang.annotation.ElementType;
@@ -169,7 +169,7 @@ public interface StudentService {
 }
 ```
 编写Service实现类 在需要切面校验的方法上添加@NeedValidate注解
-```
+```java
 package com.xiaoxin.validator.service;
 
 import com.xiaoxin.validator.annotation.NeedValidate;
@@ -222,7 +222,7 @@ public class StudentServiceImpl implements StudentService {
 
 ```
 编写切面统一处理校验逻辑
-```
+```java
 package com.xiaoxin.aop;
 
 import lombok.extern.slf4j.Slf4j;
@@ -296,7 +296,7 @@ public class ParameterValidationAspect {
 
 ```
 编写controller进行测试
-```
+```java
 package com.xiaoxin.validator.controller;
 
 import com.xiaoxin.validator.model.Result;
@@ -366,7 +366,7 @@ public class StudentController {
 }
 ```
 调用测试接口http://127.0.0.1:7788/student/addOne返回结果如下：
-```
+```javascript
 {
 "timestamp": "2018-05-17T11:13:42.651+0000",
 "status": 500,
@@ -376,7 +376,7 @@ public class StudentController {
 }
 ```
 最后Bean嵌套集合或者Bean的注解写法：
-```
+```java
 package org.hibernate.validator.referenceguide.chapter02.objectgraph.containerelement;
 
 public class Car {

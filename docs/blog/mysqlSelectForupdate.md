@@ -14,7 +14,7 @@ tag:
 根据mysql官方文档我们可以知道SELECT ... FOR UPDATE可以给查询到的关联记录加上读锁的，能够阻止其他的事务更新这些行。
 <!-- more -->
 在实际的项目中，订单的流水号的规则如下CGD + 20181011 + 00001 程序调用的function如下：
-```
+```sql
 --- genatorBillNo
 CREATE DEFINER=`root`@`%` FUNCTION `genatorBillNo`(bill_type VARCHAR(10),bill_date VARCHAR(40),id_own_org BIGINT UNSIGNED) RETURNS varchar(255) CHARSET utf8
 BEGIN
@@ -51,7 +51,7 @@ CREATE TABLE `tm_billno_sn` (
 根据官方文档的解释```对于其他搜索条件以及非唯一索引， InnoDB锁定扫描的索引范围```这里我们只用到了```IDX_ID_OWN_ORG```这个索引，而这个索引是单列的，所以该公司下所有的记录条数都被锁定了。
 下面我们来做下试验。使用mysql命令行分别开启两个session.
 session1:
-```
+```sql
 mysql> use test
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
@@ -72,14 +72,14 @@ mysql> SELECT next_sn FROM tm_billno_sn  s WHERE
 1 row in set (0.25 sec)
 ```
 session2:
-```
+```sql
 mysql> UPDATE tm_billno_sn n SET next_sn = n.next_sn+1 WHERE n.business_type = 'YSF' AND DATE_FORMAT(n.sn_date,'%Y-%m-%d')= '2018-11-04' AND n.id_own_org = 10545511425563128134 ;
 ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
 ```
 由此可以验证同一公司（id_own_org）的不同类型也是被锁定了的，肯定不行的。优化方法也很简单，将索引IDX_ID_OWN_ORG改建为```id_own_org和business_type```的联合索引，减小锁定的范围；
 或者先通过id_own_org、business_type、sn_date三者获取pk_id其他的操作使用主键索引，这样就可以锁定单行了。
 另外：如果索引创建的不合适，select...for update在执行的时候mysql认为效率低，或者锁定范围过大，则会造成锁表的情况，为了验证这一问题我们将```tm_billno_sn```的索引```IDX_ID_OWN_ORG```也删除。表结构如下：
-```
+```sql
 CREATE TABLE `tm_billno_sn` (
   `pk_id` bigint(20) unsigned NOT NULL COMMENT '主键',
   `business_type` char(10) DEFAULT NULL COMMENT '业务类型',
@@ -91,7 +91,7 @@ CREATE TABLE `tm_billno_sn` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 ```
 session1:
-```
+```sql
 mysql> begin;
 Query OK, 0 rows affected (0.00 sec)
 
@@ -105,7 +105,7 @@ mysql> SELECT next_sn FROM tm_billno_sn  s WHERE
 1 row in set (27.57 sec)
 ```
 session2:
-```
+```sql
 mysql> UPDATE tm_billno_sn n SET next_sn = n.next_sn+1 WHERE n.business_type = 'YSF' AND DATE_FORMAT(n.sn_date,'%Y-%m-%d')= '2018-11-04' AND n.id_own_org = 10545511425561984440 ;
 ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
 ```

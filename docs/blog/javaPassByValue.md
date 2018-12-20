@@ -10,7 +10,7 @@ tag:
 Java is always ```pass-by-value```. Unfortunately, they decided to call the location of an object a "reference". When we pass the value of an object, we are passing the reference to it. This is confusing to beginners.
 
 It goes like this:
-```
+```java
 public static void main(String[] args) {
     Dog aDog = new Dog("Max");
     // we pass the object to foo
@@ -30,7 +30,7 @@ public static void foo(Dog d) {
 In the example above aDog.getName() will still return "Max". The value aDog within main is not changed in the function foo with the Dog "Fifi" as the object reference is passed by value. If it were passed by reference, then the aDog.getName() in main would return "Fifi" after the call to foo.
 
 Likewise:
-```
+```java
 public static void main(String[] args) {
     Dog aDog = new Dog("Max");
     foo(aDog);

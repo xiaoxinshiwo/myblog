@@ -7,7 +7,7 @@ tag:
 ---
 
 1. Linux查看特定端口是否被占用
-```
+```bash
 zhangyongxindeMacBook-Pro:~ zhangyongxin$ lsof -i:20880
 COMMAND  PID         USER   FD   TYPE            DEVICE SIZE/OFF NODE NAME
 java    3673 zhangyongxin   62u  IPv4 0x61742efeec4b819      0t0  TCP 192.168.13.57:50442->192.168.25.1:20880 (SYN_SENT)
@@ -17,7 +17,7 @@ java    3673 zhangyongxin   93u  IPv4 0x61742efefed5199      0t0  TCP 192.168.13
 ```
 <!-- more -->
 2. dubbo接口测试
-```
+```bash
 zhangyongxin$ telnet 127.0.0.1 20880
 Trying 127.0.0.1...
 Connected to localhost.
@@ -31,7 +31,7 @@ dubbo>invoke com.f6car.passport.api.UserApi.getUser("zhangyx","96e79218965eb72c9
 elapsed: 294 ms.
 ```
 3. 通过应用找占用的端口
-```
+```bash
 1. 查找进程的pid
 [root@F6-test-web1 ~]# ps -aux | grep passport
 root     17408  0.5  2.5 4770388 828124 ?      Sl   10:02   4:13 java -Xms1g -Xmx1g -Xmn512m -server -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Dspring.profiles.active=local-test /home/opt/f6-passport-8076/passport.jar
@@ -79,7 +79,7 @@ unix  2      [ ]         STREAM     CONNECTED     17871559 17408/java
 unix  2      [ ]         STREAM     CONNECTED     17874627 17408/java
 ```
 通过上述命令可以看到占用的端口为：
-```
+```bash
 tcp6       0      0 :::8076                 :::*                    LISTEN      17408/java           off (0.00/0/0)
 tcp6       0      0 :::20882                :::*                    LISTEN      17408/java           off (0.00/0/0)
 ```

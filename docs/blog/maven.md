@@ -20,7 +20,7 @@ mvn deploy:deploy-file -DgroupId=com.alibaba.sdk -DartifactId=taobao-sdk -Dversi
 mvn deploy:deploy-file -DgroupId=com.alibaba.sdk -DartifactId=taobao-sdk -Dversion=20181204-test -Dpackaging=jar -Dfile=/Users/zhangyongxin/Downloads/dingtalk-sdk-java/taobao-sdk-java-auto_1479188381469-20181204.jar -Durl=https://maven.carzone365.com/repository/maven-3rd/ -DrepositoryId=releases
 ```
 3. maven依赖本地jar
-```
+```xml
 <dependency>
 	<groupId>com.taobao.top</groupId>
 	<artifactId>lippi-oapi-encrpt</artifactId>

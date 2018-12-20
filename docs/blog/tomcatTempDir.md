@@ -9,7 +9,7 @@ tag:
 在测试环境可以显示验证码，但是在试用环境不能显示验证码，且点多次点击后或出现Stack Overflow。
 <!-- more -->
 具体代码如下：
-```
+```java
  /**
      * @param request
      * @param response
@@ -43,7 +43,7 @@ tag:
     }
 ```
 google之：
-```
+```bash
 When you startup Tomcat, using startup.bat (Windows) or startup.sh, it calls catalina.bat/catalina.sh respectively.
 
 Catalina then needs a temp directory to be set. It does this by setting the CATALINA_TMPDIR variable to TOMCAT_HOME\temp folder and assigns it to java system environment variable as java.io.tmpdir.

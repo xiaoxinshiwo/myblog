@@ -7,7 +7,7 @@ tag:
 ---
 
 邮件收到报错信息如下：
-```
+```java
 2018-11-07 16:13:59,867 [ERROR] [XNIO-3 task-68] c.f.p.s.i.p.TsPurchaseServiceImpl:? 生产应付单失败Deadlock found when trying to get lock; try restarting transaction
 com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
@@ -42,7 +42,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException: Deadlock foun
 ```
 由于```com.f6car.purchase.service.impl.purchase.TsPurchaseServiceImpl.inStockPurchase(TsPurchaseServiceImpl.java:472)```业务内部调用了dubbo接口，
 这里看不到接口内部的具体超时情况，在这个时间的另外一个系统收到的报错邮件如下：
-```
+```java
 2018-11-07 16:13:59,859 [ERROR] [DubboServerHandler-10.25.24.204:20880-thread-188] c.a.t.s.a.ExceptionHandlerAspect:?
 ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException: Deadlock found when trying to get lock; try restarting transaction
 ### The error may exist in URL [jar:file:/mnt/apache-tomcat-7.0.70-erp/webapps/kzf6/WEB-INF/lib/biz-mapper-1.0-SNAPSHOT.jar!/sqlmap/BaseMapper.xml]
@@ -84,7 +84,7 @@ at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWi
 at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:94)
 ```
 发现```select genatorBillNo(?,?,CAST(?  as unsigned ))```时超时，赶紧让运维同学dump出线上的死锁日志如下：
-```
+```sql
 ------------------------
 LATEST  DETECTED  DEADLOCK
 ------------------------
@@ -118,13 +118,13 @@ RECORD  LOCKS  space  id  2011  page  no  12297  n  bits  336  index  PRIMARY  o
 Record  lock,  heap  no  1  PHYSICAL  RECORD:  n_fields  1;  compact  format;  info  bits  0
 ```
 关键原因：
-```
+```sql
 6340  lock  struct(s),  heap  size  778448,  1678750  row  lock(s)
 MySQL  thread  id  1523984,  OS  thread  handle  140252758099712,  query  id  7086372072  10.25.24.204  root  Sending  data
 SELECT  next_sn  INTO  seq  FROM  tm_billno_sn    s  WHERE  s.business_type  =  'TQB'  FOR  UPDATE
 ```
 查找相关代码和function找到罪魁祸首：```genatorOrgNo```
-```
+```sql
 CREATE DEFINER=`root`@`%` FUNCTION `genatorOrgNo`() RETURNS varchar(255) CHARSET utf8
 BEGIN
 DECLARE newBillNo VARCHAR(20) DEFAULT '';	#生成最新单据号

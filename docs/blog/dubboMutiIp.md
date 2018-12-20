@@ -12,7 +12,7 @@ tag:
 但是本地开发环境无法消费部署在阿里云环境的crm，即使通过```dubbo.protocol.host```绑定了外网地址，启动的时候
 控制台打印如下异常：
 <!-- more -->
-```
+```java
 2018-05-28 09:21:52,047 ERROR [main] [] c.c.c.d.p.ProviderCRM - Fail to start server(url: dubbo://test.haoyiquan.com:33128/com.carzone.crm.api.facade.CompanyCustomerFacade?application=yixiuge-crm-provider&channel.readonly.sent=true&codec=dubbo&default.timeout=20000&dubbo=crm&group=yixiuge-platform-crm&heartbeat=60000&interface=com.carzone.crm.api.facade.CompanyCustomerFacade&methods=update,register,queryById&owner=crm&pid=23287&revision=crm&side=provider&threads=200&timestamp=1527470511816) Failed to bind NettyServer on test.haoyiquan.com/101.132.**.**:33128, cause: Failed to bind to: test.haoyiquan.com/101.132.**.**:33128
 com.alibaba.dubbo.rpc.RpcException: Fail to start server(url: dubbo://test.haoyiquan.com:33128/com.carzone.crm.api.facade.CompanyCustomerFacade?application=yixiuge-crm-provider&channel.readonly.sent=true&codec=dubbo&default.timeout=20000&dubbo=crm&group=yixiuge-platform-crm&heartbeat=60000&interface=com.carzone.crm.api.facade.CompanyCustomerFacade&methods=update,register,queryById&owner=crm&pid=23287&revision=crm&side=provider&threads=200&timestamp=1527470511816) Failed to bind NettyServer on test.haoyiquan.com/101.132.**.**:33128, cause: Failed to bind to: test.haoyiquan.com/101.132.**.**:33128
 	at com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol.createServer(DubboProtocol.java:289) ~[yixiuge-crm.jar:na]

@@ -17,11 +17,11 @@ Macbook pro 、IntelliJ Idea
 ```
 步骤
 安装yarn
-```
+```bash
 brew install yarn --without-node
 ```
 新建工程文件夹并且初始化
-```
+```bash
 mkdir my_project
 
 cd my_project
@@ -29,7 +29,7 @@ cd my_project
 npm init -y
 ```
 初始化vuepress工程
-```
+```bash
 # 将 VuePress 作为一个本地依赖安装
 yarn add -D vuepress # 或者：npm install -D vuepress
 
@@ -43,7 +43,7 @@ echo "# Hello VuePress!" > docs/README.md
 npx vuepress dev docs
 ```
 接着，在 package.json 里加一些脚本:
-```
+```javascript
 {
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -52,7 +52,7 @@ npx vuepress dev docs
 }
 ```
 项目配置
-```
+```javascript
 // cd進入.vuepress資料夾
 // 建立一個config.js設定檔
 module.exports = {
@@ -102,7 +102,7 @@ module.exports = {
 1. 将 .vuepress/config.js 的 base 设置成你仓库的名字，举个例子，如果你的仓库是 https://github.com/foo/bar, 部署的页面将会通过 https://foo.github.io/bar 来访问，此时，你应该将 base 设置为 "/bar/"。
 
 2. 在你的项目中运行:
-```
+```bash
 yarn docs:build
 在GitHub上创建名为bar的repository
 将这个repository clone到本地

@@ -8,7 +8,7 @@ tag:
 ---
 ## 增加配置项
 
-```
+```java
 spring.jmx.default-domain=${spring.application.name}
 spring.jmx.enabled=true
 spring.jmx.server=mbeanServer
@@ -16,7 +16,7 @@ spring.jmx.server=mbeanServer
 <!-- more -->
 ## 配置需要暴露的mbean
 
-```
+```java
 package com.xiaoxin.jmx.bean;
 
 import lombok.extern.slf4j.Slf4j;
