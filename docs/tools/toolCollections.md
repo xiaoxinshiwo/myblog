@@ -23,3 +23,4 @@ tag:
 16. [好看代码生成图片](https://carbon.now.sh)
 17. [Google Guava](https://github.com/google/guava/wiki)
 18. [阮一峰语雀每周分享](https://www.yuque.com/ruanyf/share)
+19. [黑苹果安装学院](https://github.com/huangyz0918/Hackintosh-Installer-University/blob/master/README-CN.md)

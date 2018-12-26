@@ -16,7 +16,7 @@ module.exports = {
   port:8090,
   evergreen: true,
   themeConfig: {
-    background: `https://s1.ax1x.com/2018/11/08/i7Y6L8.jpg`,
+    background: `https://s1.ax1x.com/2018/12/26/F2wEkD.jpg`,
     github: 'xiaoxinshiwo',
     logo: 'https://ae01.alicdn.com/kf/HTB1uzODadzvK1RkSnfo762MwVXai.png',
     footer:'十步杀一人，千里不留行',
