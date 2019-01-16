@@ -25,3 +25,4 @@ tag:
 18. [阮一峰语雀每周分享](https://www.yuque.com/ruanyf/share)
 19. [黑苹果安装学院](https://github.com/huangyz0918/Hackintosh-Installer-University/blob/master/README-CN.md)
 20. [Java项目开启远程调试（tomcat、springboot）](https://blog.csdn.net/wsyw126/article/details/74853680)
+21. [mac上好用的软件](https://github.com/jaywcjlove/awesome-mac/blob/master/README-zh.md)
