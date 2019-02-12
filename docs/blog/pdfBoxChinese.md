@@ -13,6 +13,7 @@ maven依赖
     <version>2.0.13</version>
 </dependency>
 ```
+<!-- more -->
 工具类实现
 ```java
 package com.f6car.passport.core;
