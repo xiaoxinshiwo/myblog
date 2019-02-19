@@ -16,9 +16,9 @@ maven依赖
 <!-- more -->
 工具类实现
 ```java
-package com.f6car.passport.core;
+package com.xiaoxin.passport.core;
 
-import com.f6car.passport.exception.ServiceException;
+import com.xiaoxin.passport.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import main.java.com.UpYun;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -166,7 +166,7 @@ private String getFallbackFontName(PDFontDescriptor fontDescriptor) {
 问题1虽然通过安装微软字体解决了，但是可能会侵权，所以orz继续寻找最佳方案。<br />解决思路：[安装开源的思源字体](https://github.com/Pal3love/Source-Han-TrueType)，在pdfBox获取系统字体时，无论识别的字体是什么统一使用安装的思源字体，代码实现如下：
 
 ```java
-package com.f6car.passport.core;
+package com.xiaoxin.passport.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.fontbox.FontBoxFont;

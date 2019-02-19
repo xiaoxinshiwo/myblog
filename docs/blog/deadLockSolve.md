@@ -31,8 +31,8 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException: Deadlock foun
 	at com.alibaba.dubbo.rpc.cluster.support.wrapper.MockClusterInvoker.invoke(MockClusterInvoker.java:72)
 	at com.alibaba.dubbo.rpc.proxy.InvokerInvocationHandler.invoke(InvokerInvocationHandler.java:52)
 	at com.alibaba.dubbo.common.bytecode.proxy31.genPayment(proxy31.java)
-	at com.f6car.purchase.service.impl.purchase.TsPurchaseServiceImpl.inStockPurchase(TsPurchaseServiceImpl.java:472)
-	at com.f6car.purchase.service.impl.purchase.TsPurchaseServiceImpl$$FastClassBySpringCGLIB$$405c4cc7.invoke(<generated>)
+	at com.xiaoxin.purchase.service.impl.purchase.TsPurchaseServiceImpl.inStockPurchase(TsPurchaseServiceImpl.java:472)
+	at com.xiaoxin.purchase.service.impl.purchase.TsPurchaseServiceImpl$$FastClassBySpringCGLIB$$405c4cc7.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
@@ -40,7 +40,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLTransactionRollbackException: Deadlock foun
 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
 ```
-由于```com.f6car.purchase.service.impl.purchase.TsPurchaseServiceImpl.inStockPurchase(TsPurchaseServiceImpl.java:472)```业务内部调用了dubbo接口，
+由于```com.xiaoxin.purchase.service.impl.purchase.TsPurchaseServiceImpl.inStockPurchase(TsPurchaseServiceImpl.java:472)```业务内部调用了dubbo接口，
 这里看不到接口内部的具体超时情况，在这个时间的另外一个系统收到的报错邮件如下：
 ```java
 2018-11-07 16:13:59,859 [ERROR] [DubboServerHandler-10.25.24.204:20880-thread-188] c.a.t.s.a.ExceptionHandlerAspect:?

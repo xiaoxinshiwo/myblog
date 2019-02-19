@@ -85,7 +85,7 @@ docker stop zookeeper
 ```
 FROM ubuntu
 
-MAINTAINER created from zhangyognxin@f6car.com
+MAINTAINER created from zhangyognxin@xiaoxin.com
 #把java与tomcat添加到容器中 tar.gz 会自动解压
 ADD jre-8u171-linux-x64.tar.gz /usr/local/
 ADD apache-tomcat-8.5.3.tar.gz /usr/local/
@@ -108,7 +108,7 @@ $ docker build -t tomcat8:jre8 .
 Sending build context to Docker daemon   94.6MB
 Step 1/11 : FROM ubuntu:14.10
  ---> a8a2ba3ce1a3
-Step 2/11 : MAINTAINER created from zhangyognxin@f6car.com
+Step 2/11 : MAINTAINER created from zhangyognxin@xiaoxin.com
  ---> Running in 81e5c424ac4d
 Removing intermediate container 81e5c424ac4d
  ---> 27002ba82d71
